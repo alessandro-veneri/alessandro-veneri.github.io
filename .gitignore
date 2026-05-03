@@ -1,0 +1,14 @@
+.DS_Store
+Academic_CV/*.aux
+Academic_CV/*.bbl
+Academic_CV/*.bcf
+Academic_CV/*.blg
+Academic_CV/*.fdb_latexmk
+Academic_CV/*.fls
+Academic_CV/*.log
+Academic_CV/*.out
+Academic_CV/*.run.xml
+Academic_CV/*.synctex.gz
+Academic_CV/*.toc
+Academic_CV/academic.pdf
+Academic_CV/non-academic.pdf

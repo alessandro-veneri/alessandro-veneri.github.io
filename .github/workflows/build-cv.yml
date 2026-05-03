@@ -1,0 +1,36 @@
+name: Build CV PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Academic_CV/**'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Compile academic.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: Academic_CV
+          root_file: academic.tex
+
+      - name: Copy PDF into assets/
+        run: |
+          mkdir -p assets
+          cp Academic_CV/academic.pdf assets/cv.pdf
+
+      - name: Commit refreshed CV
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "build: refresh assets/cv.pdf [skip ci]"
+          file_pattern: assets/cv.pdf

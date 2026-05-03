@@ -1,0 +1,150 @@
+% HOW TO USE WITH THIS CV FORMAT
+% -----------------------------
+% 1. Mark items with a "keyword" that specifies the type of item they will be grouped by within the CV
+% 2. Call \printbibliography in main.tex with the class ('article', 'misc', etc.) and keyword to "select" only the items you want for that group of items
+
+
+% Journals
+% #########################################################
+@article{art1,
+    author={\textbf{Smith, John R.} and Brown, Michael and Yang, Steven},
+    title = {{Paper Title Goes Here}},
+    journal = {Journal Title},
+    volume = {1},
+    number = {1},
+    year = {2023},
+    url = {https://example.com},
+    keywords={J},
+    addendum = {\\ -- Add \textit{Extra Accolades} about \href{https://www.nature.com/Coolections/jhjibhhicg}{Your Article} \\ -- Write text here as normal LateX Allowing \href{https://example.com}{Special Formatting} \\ -- Best Paper Award (Conference XXX 2021)}
+}
+
+% Include daggers like below to mark equal contribution!
+@article{art2,
+    author={\textbf{Guy$^{\dagger}$, Smart} and Gal$^{\dagger}$, Smart},
+    title = {{Paper Title Goes Here}},
+    journal = {Journal Title},
+    volume = {1},
+    number = {1},
+    year = {2023},
+    url = {https://example.com},
+    keywords={J}
+}
+
+
+% Conferences
+% #########################################################
+@inproceedings{Conf1,
+    author={\textbf{Smith, John R.} and Brown, Michael and Yang, Steven},
+    title = {{Paper Title Goes Here}},
+    booktitle = {Proceedings of the Super Cool Conference},
+    volume={15},
+    pages={1-10},
+    number={1},
+    year = {2021},
+    url={https://example.com},
+    keywords={C}
+}
+
+@inproceedings{Conf2,
+	author={\textbf{Smith, John R.}},
+    title = {{Paper Title Goes Here}},
+    booktitle = {Proceedings of the Super Duper Cool Conference},
+    volume={15},
+    pages={1-10},
+    number={1},
+    year = {2021},
+    url={https://example.com},
+    keywords={C}
+}
+
+
+
+% Working papers
+% All of the non-standard items require the flexible "misc" class
+% #########################################################
+
+@misc{Working1,
+    title={Sweet new project about to blow up the scene!},
+    author={\textbf{Smith, John}. and Buddy, Best and Super, Advisor},
+    howpublished={ArXiv[Preprint], Revise and Resubmit @ PNAS},
+    year={2023},
+    url={https://example.com},
+    keywords={R}
+}
+
+@misc{Working2,
+    title={Another good one!},
+    author={\textbf{Smith, John}. and Buddy, Best and Super, Advisor},
+    howpublished={ArXiv[Preprint], Revise and Resubmit @ PNAS},
+    note = {\href{https://example.com}{Embed extra links with the `note' field}},
+    year={2023},
+    url={https://example.com},
+    keywords={R}
+}
+
+% Talks
+% #########################################################
+
+@misc{Talk1,
+    title   = {Awe inspiring presentation.},
+    author  = {\textbf{Smith, John} and Buddy, Best},
+    howpublished={\ul{10th International Conference on Cool Science} (Philadelphia, PA, USA)},
+    month    = jul,
+    year    = {2024},
+    keywords={T}
+}
+
+@misc{Talk2,
+    title={Anotha' one!.},
+    author={\textbf{Khaled, DJ}},
+    howpublished={\ul{Fourth Multidisciplinary International Symposium on Blasting Bangers} (Virtual)},
+    note = {\href{https://example.com}{Links like this}},
+    addendum = {\\ -- Extra Formatting also works \\ -- \textbf{Here}.},
+    month=oct,
+    year={2022},
+    keywords={T}
+}
+
+
+% Posters
+% #########################################################
+@misc{Poster1,
+    title   = {{Poster Name here.}},
+    author  = {\textbf{Smith, John} and Author1, Co and Author2, Co},
+    howpublished={\ul{Another Cool Conference} (Cambridge, MA, USA)},
+    month    = jul,
+    year    = {2024},
+    keywords={P}
+}
+@misc{Poster2,
+    title   = {{Poster Name here.}},
+    author  = {\textbf{Smith, John} and Author1, Co and Author2, Co},
+    howpublished={\ul{Another Cool Conference} (Cambridge, MA, USA)},
+    month    = apr,
+    year    = {2023},
+    keywords={P}
+}
+
+
+
+
+% Demonstrations and Tutorials
+% #########################################################
+
+@misc{demo1,
+    author = {\textbf{Smith, John}},
+    title = {Exciting demonstration.},
+    howpublished = {\ul{Another Cool Conference} Workshop on Technical Things (Cambridge, MA, USA)},
+    month = apr,
+    year = {2022},
+    keywords ={D}
+}
+@misc{demo2,
+    author = {\textbf{Smith, John}},
+    title = {CoVaxxy: Linking COVID-19 vaccine adoption and online (mis)information.},
+    note = {Include links this way for the \href{https://example.com}{Cool Organization}},
+    month = jun,
+    year = {2021},
+    keywords ={D}
+}
+

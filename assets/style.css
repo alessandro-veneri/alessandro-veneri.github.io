@@ -1,0 +1,194 @@
+/* ── EUI Academic Website — Alessandro Veneri ──────────────────────────
+   Palette
+   --eui-dark   #004676   EUI Principal Dark Blue
+   --eui-mid    #2581c4   EUI Principal Mid Blue
+   --eui-terra  #c85826   EUI Secondary Terracotta
+   --eui-gold   #f1c46f   EUI Secondary Gold (rarely used)
+   --eui-stone  #c4aea0   EUI Secondary Stone
+   --bg         #faf9f7   Warm off-white
+   --text       #1a1a1a
+   ──────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --eui-dark:  #004676;
+  --eui-mid:   #2581c4;
+  --eui-terra: #c85826;
+  --eui-stone: #c4aea0;
+  --eui-gold:  #f1c46f;
+  --bg:        #faf9f7;
+  --bg-alt:    #f1eeea;
+  --text:      #1c1c1c;
+  --text-muted:#5a5a5a;
+  --border:    #e0dbd5;
+
+  --serif: 'IBM Plex Serif', Georgia, serif;
+  --sans:  'IBM Plex Sans', system-ui, sans-serif;
+
+  --max-w: 780px;
+  --nav-h: 58px;
+}
+
+html { font-size: 17px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── NAV ──────────────────────────────────────────────────────────── */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--eui-dark);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nav-name:hover { color: var(--eui-gold); }
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 0.35rem 0.9rem;
+  border-radius: 2px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-links .nav-cv a {
+  color: var(--eui-gold);
+  border: 1px solid rgba(241,196,111,0.45);
+  margin-left: 0.4rem;
+}
+
+.nav-links .nav-cv a:hover {
+  background: rgba(241,196,111,0.15);
+  color: var(--eui-gold);
+}
+
+/* ── MAIN ─────────────────────────────────────────────────────────── */
+
+main {
+  flex: 1;
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────────── */
+
+footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--sans);
+}
+
+footer a { color: var(--text-muted); text-decoration: none; }
+footer a:hover { color: var(--eui-dark); }
+
+/* ── TYPOGRAPHY UTILITIES ─────────────────────────────────────────── */
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--eui-mid);
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+/* ── PAGE SECTION DIVIDER ─────────────────────────────────────────── */
+
+.section-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* ── FIELD TAGS ───────────────────────────────────────────────────── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.tag {
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--eui-dark);
+  background: rgba(0,70,118,0.07);
+  border: 1px solid rgba(0,70,118,0.18);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .nav-inner { padding: 0 1rem; }
+  main { padding: 2rem 1rem 4rem; }
+  .nav-name { font-size: 0.88rem; }
+}

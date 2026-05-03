@@ -1,0 +1,37 @@
+% Add your educational background here!
+
+% NOTE: If you want to remove the "Expected" footnote, you will want to remove:
+% - Directly below: \renewcommand, \setcounter
+% - In the table: \footnotemark in the left column
+% - After the table: \footnotetext, \renewcommand, \setcounter
+
+% Different numbers in "\setcounter{footnote}{0}" use different symbols
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+
+\hrule % Add horizontal line
+
+\begin{longtable}[l]{@{}p{.125\textwidth} p{0.8\textwidth}}
+    % Use custom symbol footnote for "expected"
+    2022-- & \textbf{PhD in Economics}, European University Institute \\
+    & Supervisors: \href{https://www.eui.eu/people?id=ozlem-bedre-defolie}{Özlem Bedre-Defolie}, \href{https://sites.google.com/view/giacomo-calzolari}{Giacomo Calzolari} \vspace{2mm} \\
+
+    
+    2019--2021 & \textbf{MRes in Economics},  Université catholique de Louvain \\
+    & Supervisor: \href{https://sites.uclouvain.be/poresp/cv/cv_maniquet.pdf}{François Maniquet}  \vspace{2mm} \\
+
+    2019--2021 & \textbf{MSc in Economics and Political Science},  Università Statale di Milano
+    \vspace{2mm} \\
+    
+    2016--2019 & \textbf{BA in Philosophy}, Università Ca' Foscari Venezia \\
+    & Visiting stay: University of Pennsylvania, College of Arts and Sciences
+% \end{tabularx}
+\end{longtable}
+
+
+% Add text for the custom footnote
+%\footnotetext[1]{Expected.}
+
+% Restore the default footnote numbering
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{1}

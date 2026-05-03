@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alessandro Veneri</title>
+  <meta name="description" content="Alessandro Veneri — PhD Researcher in Economics at the European University Institute." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #ffffff;
+      --text:       #1a1a1a;
+      --muted:      #6b6b6b;
+      --faint:      #999;
+      --border:     #e8e8e8;
+      --accent:     #004676;   /* EUI dark blue — used sparingly */
+      --link:       #004676;
+      --terra:      #c85826;   /* EUI terracotta — character accent */
+      --serif:      'EB Garamond', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+      --max-w:      860px;
+      --col-gap:    4rem;
+      --photo-w:    220px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ──────────────────────────────────────────────────────── */
+
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-name:hover { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: baseline;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    .nav-links .nav-cv a {
+      color: var(--terra);
+    }
+
+    /* ── LAYOUT ───────────────────────────────────────────────────── */
+
+    main {
+      flex: 1;
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1fr var(--photo-w);
+      gap: var(--col-gap);
+      align-items: start;
+    }
+
+    /* ── LEFT COLUMN ─────────────────────────────────────────────── */
+
+    .bio-col h1 {
+      font-family: var(--serif);
+      font-size: 2.1rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+      line-height: 1.2;
+    }
+
+    .bio-col .role {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .bio-col p {
+      font-size: 0.96rem;
+      color: var(--text);
+      margin-bottom: 1.1rem;
+      text-wrap: pretty;
+      max-width: 52ch;
+    }
+
+    .bio-col p a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,70,118,0.25);
+      transition: border-color 0.15s;
+    }
+
+    .bio-col p a:hover { border-bottom-color: var(--link); }
+
+    /* fields list — plain, no boxes */
+    .fields {
+      margin-top: 1.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      row-gap: 0.2rem;
+    }
+
+    .fields span::before {
+      content: '—';
+      margin-right: 0.4rem;
+      color: var(--border);
+    }
+
+    /* ── RIGHT COLUMN ────────────────────────────────────────────── */
+
+    .photo-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .photo-col img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      /* no border-radius — clean rectangular crop like barczay */
+    }
+
+    /* contact list under photo */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      border: none;
+    }
+
+    .contact-list a {
+      font-size: 0.80rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.15s;
+      line-height: 1.4;
+      border: none;
+    }
+
+    .contact-list a:hover { color: var(--text); }
+
+    .contact-list svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    /* EUI logo — very quiet, below contacts */
+    .eui-mark {
+      margin-top: 0.5rem;
+      opacity: 0.35;
+      width: 100px;
+    }
+
+    .eui-mark img { width: 100%; height: auto; }
+
+    /* ── FOOTER ───────────────────────────────────────────────────── */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--faint);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────── */
+
+    @media (max-width: 620px) {
+      main { padding: 3rem 1.2rem 4rem; }
+
+      .home-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .photo-col {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.2rem;
+      }
+
+      .photo-col img {
+        width: 110px;
+        aspect-ratio: 3/4;
+        flex-shrink: 0;
+      }
+
+      .contact-list { gap: 0.35rem; }
+      .eui-mark { display: none; }
+      .bio-col h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="index.html">Alessandro Veneri</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li class="nav-cv"><a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="home-grid">
+
+      <!-- LEFT: bio -->
+      <div class="bio-col">
+        <h1>Alessandro Veneri</h1>
+
+        <p>
+          I am a fourth-year PhD student in Economics at the
+          <a href="https://www.eui.eu/en/academic-units/department-of-economics" target="_blank" rel="noopener">European University Institute</a>
+          in Florence, under the supervision of
+          <a href="https://www.eui.eu/people?id=ozlem-bedre-defolie" target="_blank" rel="noopener">Özlem Bedre-Defolie</a>
+          and
+          <a href="https://www.eui.eu/people?id=giacomo-calzolari" target="_blank" rel="noopener">Giacomo Calzolari</a>.
+        </p>
+
+        <p>
+          My research focuses on industrial organisation, platform economics,
+          and mechanism design. I also work on AI safety and am a 2026
+          <a href="https://pibbss.ai" target="_blank" rel="noopener">PIBBSS</a> Research Summer Fellow.
+        </p>
+
+        <div class="fields">
+          <span>Industrial Organisation</span>
+          <span>Platform Economics</span>
+          <span>Mechanism Design</span>
+          <span>Auction Theory</span>
+          <span>AI Safety</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: photo + contacts -->
+      <div class="photo-col">
+        <img src="assets/photo.jpg" alt="Alessandro Veneri" />
+
+        <nav class="contact-list" aria-label="Contact">
+          <a href="#" id="email-link">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2-8 5-8-5h16zm0 12H4V9l8 5 8-5v9z"/></svg>
+            <span id="email-text">email</span>
+          </a>
+          <a href="https://www.linkedin.com/in/alessandroveneri/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm-1-8a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 8h-2v-3.5c0-1-.4-1.5-1.1-1.5-.8 0-1.2.6-1.2 1.5V17h-2v-7h2v1c.4-.7 1.1-1.1 2-1.1 1.6 0 2.3 1.1 2.3 3.3V17z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://x.com/aleveneri" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h6.894l4.264 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @aleveneri
+          </a>
+        </nav>
+
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>European University Institute · Florence</footer>
+
+  <!-- Tweaks -->
+  <div id="tweaks-root"></div>
+
+  <script>
+    // Email obfuscation
+    (function () {
+      var u = 'alessandro.veneri', d = 'eui', t = 'eu';
+      var link = document.getElementById('email-link');
+      var span = document.getElementById('email-text');
+      if (link && span) {
+        link.href = 'mailto:' + u + '\u0040' + d + '.' + t;
+        span.textContent = u + ' [at] ' + d + ' [dot] ' + t;
+      }
+    })();
+
+    // Tweaks protocol — register before Babel
+    window.__tweaksPanelVisible = false;
+    window.__tweaksSetVisible = null;
+    window.addEventListener('message', function(e) {
+      if (!e.data) return;
+      if (e.data.type === '__activate_edit_mode') {
+        window.__tweaksPanelVisible = true;
+        if (window.__tweaksSetVisible) window.__tweaksSetVisible(true);
+      }
+      if (e.data.type === '__deactivate_edit_mode') {
+        window.__tweaksPanelVisible = false;
+        if (window.__tweaksSetVisible) window.__tweaksSetVisible(false);
+      }
+    });
+  </script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "photoShape": "bw",
+      "navWeight": "light",
+      "fieldStyle": "dashes"
+    }/*EDITMODE-END*/;
+
+    function applyTweaks(tweaks) {
+      const img = document.querySelector('.photo-col img');
+      if (img) {
+        img.style.borderRadius = tweaks.photoShape === 'rounded' ? '4px' : '0px';
+        img.style.filter = tweaks.photoShape === 'bw' ? 'grayscale(100%)' : 'none';
+      }
+
+      // Nav weight
+      const navName = document.querySelector('.nav-name');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      if (tweaks.navWeight === 'light') {
+        if (navName) { navName.style.fontWeight = '400'; navName.style.fontSize = '1.15rem'; }
+        navLinks.forEach(a => { a.style.fontWeight = '400'; a.style.fontSize = '0.82rem'; });
+      } else {
+        if (navName) { navName.style.fontWeight = '500'; navName.style.fontSize = '0.95rem'; }
+        navLinks.forEach(a => { a.style.fontWeight = '500'; a.style.fontSize = '0.78rem'; a.style.letterSpacing = '0.04em'; });
+      }
+
+      // Field style
+      const fields = document.querySelector('.fields');
+      if (fields) {
+        if (tweaks.fieldStyle === 'hidden') {
+          fields.style.display = 'none';
+        } else if (tweaks.fieldStyle === 'comma') {
+          fields.style.display = 'block';
+          fields.querySelectorAll('span').forEach((s, i, arr) => {
+            s.style.display = 'inline';
+            s.style.marginRight = '0';
+          });
+          fields.style.color = 'var(--muted)';
+        } else {
+          fields.style.display = 'flex';
+          fields.querySelectorAll('span').forEach(s => { s.style.display = ''; });
+        }
+      }
+    }
+
+    function TweaksApp() {
+      const [visible, setVisible] = React.useState(window.__tweaksPanelVisible || false);
+      const [tw, setTwState] = React.useState(TWEAK_DEFAULTS);
+
+      React.useEffect(() => {
+        window.__tweaksSetVisible = setVisible;
+        window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+        return () => { window.__tweaksSetVisible = null; };
+      }, []);
+
+      React.useEffect(() => { applyTweaks(tw); }, [tw]);
+
+      function setTweak(key, val) {
+        setTwState(prev => {
+          const next = { ...prev, [key]: val };
+          window.parent.postMessage({ type: '__edit_mode_set_keys', edits: next }, '*');
+          return next;
+        });
+      }
+
+      function handleClose() {
+        setVisible(false);
+        window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+      }
+
+      if (!visible) return null;
+
+      return (
+        <TweaksPanel title="Tweaks" onClose={handleClose}>
+          <TweakSection label="Photo treatment">
+            <TweakRadio
+              value={tw.photoShape}
+              onChange={v => setTweak('photoShape', v)}
+              options={[
+                { value: 'rect',    label: 'Rectangular' },
+                { value: 'rounded', label: 'Rounded' },
+                { value: 'bw',      label: 'B&W' },
+              ]}
+            />
+          </TweakSection>
+
+          <TweakSection label="Nav style">
+            <TweakRadio
+              value={tw.navWeight}
+              onChange={v => setTweak('navWeight', v)}
+              options={[
+                { value: 'light',  label: 'Light serif' },
+                { value: 'crisp',  label: 'Crisp sans' },
+              ]}
+            />
+          </TweakSection>
+
+          <TweakSection label="Research fields">
+            <TweakRadio
+              value={tw.fieldStyle}
+              onChange={v => setTweak('fieldStyle', v)}
+              options={[
+                { value: 'dashes', label: 'With dashes' },
+                { value: 'comma',  label: 'Inline' },
+                { value: 'hidden', label: 'Hidden' },
+              ]}
+            />
+          </TweakSection>
+        </TweaksPanel>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp />);
+  </script>
+
+</body>
+</html>
