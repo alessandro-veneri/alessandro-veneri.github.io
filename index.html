@@ -8,10 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -184,6 +180,7 @@
       object-fit: cover;
       object-position: center top;
       display: block;
+      filter: grayscale(100%);
       /* no border-radius — clean rectangular crop like barczay */
     }
 
@@ -336,9 +333,6 @@
 
   <footer>European University Institute · Florence</footer>
 
-  <!-- Tweaks -->
-  <div id="tweaks-root"></div>
-
   <script>
     // Email obfuscation
     (function () {
@@ -350,135 +344,6 @@
         span.textContent = u + ' [at] ' + d + ' [dot] ' + t;
       }
     })();
-
-    // Tweaks protocol — register before Babel
-    window.__tweaksPanelVisible = false;
-    window.__tweaksSetVisible = null;
-    window.addEventListener('message', function(e) {
-      if (!e.data) return;
-      if (e.data.type === '__activate_edit_mode') {
-        window.__tweaksPanelVisible = true;
-        if (window.__tweaksSetVisible) window.__tweaksSetVisible(true);
-      }
-      if (e.data.type === '__deactivate_edit_mode') {
-        window.__tweaksPanelVisible = false;
-        if (window.__tweaksSetVisible) window.__tweaksSetVisible(false);
-      }
-    });
-  </script>
-
-  <script type="text/babel">
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "photoShape": "bw",
-      "navWeight": "light",
-      "fieldStyle": "dashes"
-    }/*EDITMODE-END*/;
-
-    function applyTweaks(tweaks) {
-      const img = document.querySelector('.photo-col img');
-      if (img) {
-        img.style.borderRadius = tweaks.photoShape === 'rounded' ? '4px' : '0px';
-        img.style.filter = tweaks.photoShape === 'bw' ? 'grayscale(100%)' : 'none';
-      }
-
-      // Nav weight
-      const navName = document.querySelector('.nav-name');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      if (tweaks.navWeight === 'light') {
-        if (navName) { navName.style.fontWeight = '400'; navName.style.fontSize = '1.15rem'; }
-        navLinks.forEach(a => { a.style.fontWeight = '400'; a.style.fontSize = '0.82rem'; });
-      } else {
-        if (navName) { navName.style.fontWeight = '500'; navName.style.fontSize = '0.95rem'; }
-        navLinks.forEach(a => { a.style.fontWeight = '500'; a.style.fontSize = '0.78rem'; a.style.letterSpacing = '0.04em'; });
-      }
-
-      // Field style
-      const fields = document.querySelector('.fields');
-      if (fields) {
-        if (tweaks.fieldStyle === 'hidden') {
-          fields.style.display = 'none';
-        } else if (tweaks.fieldStyle === 'comma') {
-          fields.style.display = 'block';
-          fields.querySelectorAll('span').forEach((s, i, arr) => {
-            s.style.display = 'inline';
-            s.style.marginRight = '0';
-          });
-          fields.style.color = 'var(--muted)';
-        } else {
-          fields.style.display = 'flex';
-          fields.querySelectorAll('span').forEach(s => { s.style.display = ''; });
-        }
-      }
-    }
-
-    function TweaksApp() {
-      const [visible, setVisible] = React.useState(window.__tweaksPanelVisible || false);
-      const [tw, setTwState] = React.useState(TWEAK_DEFAULTS);
-
-      React.useEffect(() => {
-        window.__tweaksSetVisible = setVisible;
-        window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-        return () => { window.__tweaksSetVisible = null; };
-      }, []);
-
-      React.useEffect(() => { applyTweaks(tw); }, [tw]);
-
-      function setTweak(key, val) {
-        setTwState(prev => {
-          const next = { ...prev, [key]: val };
-          window.parent.postMessage({ type: '__edit_mode_set_keys', edits: next }, '*');
-          return next;
-        });
-      }
-
-      function handleClose() {
-        setVisible(false);
-        window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
-      }
-
-      if (!visible) return null;
-
-      return (
-        <TweaksPanel title="Tweaks" onClose={handleClose}>
-          <TweakSection label="Photo treatment">
-            <TweakRadio
-              value={tw.photoShape}
-              onChange={v => setTweak('photoShape', v)}
-              options={[
-                { value: 'rect',    label: 'Rectangular' },
-                { value: 'rounded', label: 'Rounded' },
-                { value: 'bw',      label: 'B&W' },
-              ]}
-            />
-          </TweakSection>
-
-          <TweakSection label="Nav style">
-            <TweakRadio
-              value={tw.navWeight}
-              onChange={v => setTweak('navWeight', v)}
-              options={[
-                { value: 'light',  label: 'Light serif' },
-                { value: 'crisp',  label: 'Crisp sans' },
-              ]}
-            />
-          </TweakSection>
-
-          <TweakSection label="Research fields">
-            <TweakRadio
-              value={tw.fieldStyle}
-              onChange={v => setTweak('fieldStyle', v)}
-              options={[
-                { value: 'dashes', label: 'With dashes' },
-                { value: 'comma',  label: 'Inline' },
-                { value: 'hidden', label: 'Hidden' },
-              ]}
-            />
-          </TweakSection>
-        </TweaksPanel>
-      );
-    }
-
-    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp />);
   </script>
 
 </body>

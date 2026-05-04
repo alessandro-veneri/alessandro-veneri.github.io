@@ -13,7 +13,6 @@ A minimal static academic website for GitHub Pages.
 │   └── *.tex, ref.bib               ← Section subfiles + bibliography
 ├── .github/workflows/build-cv.yml   ← Auto-compile workflow
 └── assets/
-    ├── style.css                    ← Shared stylesheet
     ├── photo.jpg                    ← Profile photo
     ├── EUI-Logo.svg                 ← EUI logo
     └── cv.pdf                       ← Auto-built from Academic_CV/academic.tex
