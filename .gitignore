@@ -1,4 +1,5 @@
 .DS_Store
+.claude/
 Academic_CV/*.aux
 Academic_CV/*.bbl
 Academic_CV/*.bcf

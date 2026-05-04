@@ -167,6 +167,24 @@
       color: var(--border);
     }
 
+    .feedback {
+      margin-top: 1.6rem;
+      font-size: 0.75rem;
+      color: var(--faint);
+    }
+
+    .feedback a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .feedback a:hover {
+      color: var(--muted);
+      border-bottom-color: var(--muted);
+    }
+
     /* ── RIGHT COLUMN ────────────────────────────────────────────── */
 
     .photo-col {
@@ -212,6 +230,28 @@
       height: 13px;
       fill: currentColor;
       flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    .social-row a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .social-row a:hover { color: var(--text); }
+
+    .social-row svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      display: block;
       opacity: 0.6;
     }
 
@@ -307,6 +347,10 @@
           <span>Auction Theory</span>
           <span>AI Safety</span>
         </div>
+
+        <p class="feedback">
+          <a href="https://www.admonymous.co/alessandro-veneri" target="_blank" rel="noopener">Feel free to leave anonymous feedback.</a>
+        </p>
       </div>
 
       <!-- RIGHT: photo + contacts -->
@@ -318,19 +362,15 @@
             <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2-8 5-8-5h16zm0 12H4V9l8 5 8-5v9z"/></svg>
             <span id="email-text">email</span>
           </a>
-          <a href="https://www.linkedin.com/in/alessandroveneri/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm-1-8a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 8h-2v-3.5c0-1-.4-1.5-1.1-1.5-.8 0-1.2.6-1.2 1.5V17h-2v-7h2v1c.4-.7 1.1-1.1 2-1.1 1.6 0 2.3 1.1 2.3 3.3V17z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://x.com/aleveneri" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h6.894l4.264 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            @aleveneri
-          </a>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/in/alessandroveneri/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm-1-8a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 8h-2v-3.5c0-1-.4-1.5-1.1-1.5-.8 0-1.2.6-1.2 1.5V17h-2v-7h2v1c.4-.7 1.1-1.1 2-1.1 1.6 0 2.3 1.1 2.3 3.3V17z"/></svg>
+            </a>
+            <a href="https://x.com/aleveneri" target="_blank" rel="noopener" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.25 2.25h6.894l4.264 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
         </nav>
-
-        <p style="font-size:0.75rem; color:var(--faint); margin-top:0.5rem;">
-          <a href="https://www.admonymous.co/alessandro-veneri" target="_blank" rel="noopener" style="color:inherit; border-bottom:1px solid rgba(0,0,0,0.15); text-decoration:none;">Feel free to leave anonymous feedback.</a>
-        </p>
 
       </div>
 
@@ -340,15 +380,12 @@
   <footer>European University Institute · Florence</footer>
 
   <script>
-    // Email obfuscation
     (function () {
       var u = 'alessandro.veneri', d = 'eui', t = 'eu';
       var link = document.getElementById('email-link');
       var span = document.getElementById('email-text');
-      if (link && span) {
-        link.href = 'mailto:' + u + '\u0040' + d + '.' + t;
-        span.textContent = u + ' [at] ' + d + ' [dot] ' + t;
-      }
+      if (link) { link.href = 'mailto:' + u + '@' + d + '.' + t; }
+      if (span) { span.textContent = u + '@' + d + '.' + t; }
     })();
   </script>
 

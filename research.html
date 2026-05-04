@@ -294,7 +294,7 @@
             <div class="paper-byline">
               <span>with <a href="#" class="coauthor-link">Rodolfo Alberto Salonia</a> (EUI)</span>
             </div>
-            <div class="paper-presentations">Presentations: </div>
+            <div class="paper-presentations">Presented at: 17th Paris Conference on Digital Economics (2026), 4th Year Forum (2026), EUI Micro Theory Working Group (2025), XXXIX Jornadas de Economía Industrial, 36th Stony Brook International Conference on Game Theory, Lisbon Meetings on Game Theory and Applications (2025), Oligo Conference (2025, poster session), A workshop on the role of auctions in the allocation of resources, University of Bath (2025) </div>
           </div>
         </button>
         <div class="paper-abstract" id="abs-1" role="region">
@@ -311,7 +311,7 @@
           <div class="paper-meta">
             <div class="paper-title">Screening with Aggregate Quality Spillovers</div>
             <div class="paper-byline"></div>
-            <div class="paper-presentations">Presentations: </div>
+            <div class="paper-presentations">Presented at: EUI Micro Theory Working Group (2026)</div>
           </div>
         </button>
         <div class="paper-abstract" id="abs-2" role="region">
@@ -330,12 +330,12 @@
             <div class="paper-byline">
               <span>with <a href="#" class="coauthor-link">Lewis Hammond</a> (Oxford / CAIF) and <a href="#" class="coauthor-link">Joss Oliver</a> (CAIF)</span>
             </div>
-            <div class="paper-presentations">Presentations: </div>
+            <div class="paper-presentations"></div>
           </div>
         </button>
-        <div class="paper-abstract" id="abs-3" role="region">
+        <!-- <div class="paper-abstract" id="abs-3" role="region">
           <p>This project develops a formal framework for evaluating when AI capabilities are differentially cooperative. We model capabilities as modules that transform baseline games by extending players' action spaces. Ostensibly cooperative capabilities (such as communication, commitment, simulation) exhibit dual-use potential. We posit conjectures about which standard cooperative capabilities might be differentially cooperative across different game classes, with the aim of characterizing formal conditions distinguishing capabilities that robustly improve cooperation from those whose effects depend on the baseline game.</p>
-        </div>
+        </div> -->
       </li>
 
     </ul>
@@ -364,7 +364,7 @@
 
     // Hide empty presentations fields
     document.querySelectorAll('.paper-presentations').forEach(function(el) {
-      var text = el.textContent.replace('Presentations:', '').trim();
+      var text = el.textContent.replace('Presented at:', '').trim();
       if (!text) el.style.display = 'none';
     });
   </script>
