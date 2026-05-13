@@ -1,15 +1,19 @@
-name: Build CV PDF
+name: Build and Deploy Site
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'Academic_CV/**'
-      - '.github/workflows/build-cv.yml'
+  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -24,13 +28,28 @@ jobs:
           working_directory: Academic_CV
           root_file: academic.tex
 
-      - name: Copy PDF into assets/
+      - name: Assemble site
         run: |
-          mkdir -p assets
-          cp Academic_CV/academic.pdf assets/cv.pdf
+          mkdir -p _site/assets
+          cp index.html research.html _site/
+          cp assets/EUI-Logo.svg assets/photo.jpg _site/assets/
+          cp Academic_CV/academic.pdf _site/assets/cv.pdf
+          echo "--- _site contents ---"
+          ls -la _site _site/assets
 
-      - name: Commit refreshed CV
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          commit_message: "build: refresh assets/cv.pdf [skip ci]"
-          file_pattern: assets/cv.pdf
+          path: _site
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
