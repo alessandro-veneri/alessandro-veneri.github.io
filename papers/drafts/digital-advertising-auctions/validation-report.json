@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "paperId": "digital-advertising-auctions",
+  "slug": "digital-advertising-auctions",
+  "generatedAt": "2026-07-10T20:42:27+00:00",
+  "thresholds": {
+    "overallProseRecall": 0.99,
+    "sectionProseRecall": 0.97,
+    "maximumUnmatchedRun": 24
+  },
+  "failures": [
+    {
+      "id": "required-file:d8426e4a0c29",
+      "check": "required-file",
+      "severity": "hard",
+      "overridable": false,
+      "message": "missing required artifact: paper.xml"
+    },
+    {
+      "id": "required-file:c107788eb15a",
+      "check": "required-file",
+      "severity": "hard",
+      "overridable": false,
+      "message": "missing required artifact: paper-context.json"
+    }
+  ],
+  "warnings": [],
+  "passed": false,
+  "unapprovedFailures": [
+    "required-file:d8426e4a0c29",
+    "required-file:c107788eb15a"
+  ]
+}

@@ -1,0 +1,97 @@
+:root {
+  --bg: #fffff8;
+  --paper: #fff;
+  --text: #1a1a1a;
+  --muted: #686868;
+  --border: #e2e2da;
+  --accent: #004676;
+  --terra: #c85826;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Inter, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.72; }
+button, textarea { font: inherit; }
+a { color: var(--accent); }
+
+.site-header {
+  height: 52px; padding: 0 2rem; border-bottom: 1px solid var(--border); background: white;
+  display: flex; align-items: center; justify-content: space-between; font-family: var(--sans);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-name { color: var(--text); text-decoration: none; font-family: var(--serif); font-size: 1.1rem; }
+.site-header nav { display: flex; gap: 1.5rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; font-size: .82rem; }
+
+.paper-sidebar {
+  position: fixed; top: 52px; bottom: 0; left: 0; width: 280px; overflow-y: auto;
+  padding: 1.5rem 1.25rem 3rem; background: white; border-right: 1px solid var(--border); font-family: var(--sans);
+}
+.paper-sidebar button, .back-to-top {
+  width: 100%; display: block; margin-bottom: .65rem; padding: .65rem .75rem; border: 1px solid var(--border);
+  border-radius: 4px; background: white; color: var(--accent); text-align: left; text-decoration: none; cursor: pointer;
+}
+.paper-sidebar h2 { margin: 1.6rem 0 .65rem; font-size: .75rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.paper-sidebar ol { margin: 0; padding-left: 1.2rem; }
+.paper-sidebar li { margin: .35rem 0; font-size: .82rem; line-height: 1.35; }
+.paper-sidebar li.subsection { margin-left: .8rem; }
+.paper-sidebar a { color: var(--text); text-decoration: none; }
+.availability { min-height: 1.2rem; color: var(--muted); font-size: .72rem; }
+
+.paper-main { max-width: 900px; margin-left: 280px; padding: 4rem 5rem 7rem; }
+.loading { color: var(--muted); font-family: var(--sans); }
+.draft-banner { padding: .65rem 1rem; margin-bottom: 2rem; border: 1px solid #e4c59a; background: #fff6e5; font-family: var(--sans); font-size: .82rem; }
+.paper-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; }
+.paper-title { font-size: 2.35rem; line-height: 1.2; font-weight: 400; margin: 0 0 .8rem; }
+.paper-authors, .paper-date { color: var(--muted); font-family: var(--sans); font-size: .9rem; }
+.paper-links { margin-top: 1rem; font-family: var(--sans); font-size: .84rem; }
+.abstract { margin: 2rem 0; padding: 1.4rem; background: #f7f7ef; border-left: 3px solid var(--terra); }
+.section { scroll-margin-top: 70px; margin-top: 2.8rem; }
+.section > h2, .section > h3, .section > h4 { font-weight: 400; line-height: 1.25; }
+.section > h2 { font-size: 1.8rem; }
+.section > h3 { font-size: 1.4rem; }
+.paper-paragraph { text-align: justify; text-wrap: pretty; }
+.equation { overflow-x: auto; margin: 1.4rem 0; text-align: center; }
+.result-block { margin: 1.4rem 0; padding: 1rem 1.2rem; border-left: 3px solid var(--accent); background: #fafafa; }
+.proof { border-left-color: var(--border); }
+.result-label { display: block; margin-bottom: .45rem; font: 600 .78rem var(--sans); letter-spacing: .05em; text-transform: uppercase; }
+.citation, .footnote-ref { padding: 0; border: 0; background: none; color: var(--accent); cursor: pointer; }
+.footnote-ref { vertical-align: super; font-size: .72em; }
+figure { margin: 2rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; }
+figcaption, .table-caption { color: var(--muted); font: .82rem/1.5 var(--sans); margin-top: .6rem; }
+.table-wrap { overflow-x: auto; margin: 2rem 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid var(--border); padding: .55rem; text-align: left; }
+.source-highlight { animation: source-pulse 2.4s ease; outline: 3px solid rgba(200, 88, 38, .45); }
+@keyframes source-pulse { from { background: #fff2a8; } to { background: transparent; } }
+
+dialog { width: min(720px, calc(100% - 2rem)); max-height: 85vh; border: 1px solid var(--border); border-radius: 6px; padding: 0; }
+dialog::backdrop { background: rgba(0, 0, 0, .36); }
+.dialog-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.dialog-header h2 { margin: 0; font: 500 1rem var(--sans); }
+.dialog-header button { border: 0; background: none; font-size: 1.5rem; cursor: pointer; }
+#summaryText, #noteText { padding: 1.25rem; }
+.chat-messages { min-height: 220px; max-height: 48vh; overflow-y: auto; padding: 1.25rem; }
+.chat-message { max-width: 88%; margin-bottom: .8rem; padding: .75rem .9rem; border-radius: 6px; white-space: pre-wrap; }
+.chat-message.user { margin-left: auto; background: #e9f1f6; }
+.chat-message.assistant { background: #f5f5ee; }
+.source-button { display: block; margin-top: .55rem; border: 0; padding: 0; color: var(--accent); background: none; cursor: pointer; font: .78rem var(--sans); }
+.chat-form { padding: 1rem 1.25rem; border-top: 1px solid var(--border); }
+.chat-form label { display: block; font: .78rem var(--sans); margin-bottom: .35rem; }
+.chat-form textarea { width: 100%; min-height: 90px; resize: vertical; padding: .65rem; border: 1px solid var(--border); }
+.chat-form > button { margin-top: .65rem; padding: .55rem 1rem; border: 0; border-radius: 4px; background: var(--accent); color: white; cursor: pointer; }
+.privacy-note { padding: 0 1.25rem 1rem; color: var(--muted); font: .7rem/1.45 var(--sans); }
+.mobile-toc-button { display: none; }
+
+@media (max-width: 850px) {
+  .site-header { padding: 0 1rem; }
+  .paper-sidebar { display: none; width: min(310px, 88vw); z-index: 30; box-shadow: 4px 0 16px rgba(0,0,0,.12); }
+  .paper-sidebar.open { display: block; }
+  .mobile-toc-button { display: block; position: fixed; right: 1rem; bottom: 1rem; z-index: 25; border: 0; border-radius: 999px; padding: .7rem 1rem; background: var(--accent); color: white; }
+  .paper-main { margin-left: 0; padding: 2.5rem 1.25rem 6rem; }
+  .paper-title { font-size: 1.85rem; }
+  .paper-paragraph { text-align: left; }
+}

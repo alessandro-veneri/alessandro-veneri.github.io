@@ -1,0 +1,2618 @@
+center
+    
+center
+
+center
+    
+center
+
+center
+    
+center
+
+abstract
+We study how asymmetric access to consumer data shapes competition and data management strategies in real-time bidding advertising markets. In our model, two demand-side platforms (DSPs) bid for a single ad slot in a first-price auction. Each DSP privately values the impression according to the consumer’s expected interaction with its ad. The DSPs are asymmetrically informed about their values. One DSP is vertically integrated within the ad-tech stack and has privileged access to consumer data: with probability , it observes its value before bidding; otherwise, it receives the same noisy signal as its non-integrated rival. We characterize the unique Bayesian Nash equilibrium and show that increased access to data softens competition and raises both DSPs' expected payoff. At the same time, consumers benefit from improved targeting. We then allow the integrated platform to license data access to its rival through a take-it-or-leave-it offer. We characterize when the platform optimally preserves a closed ecosystem, offering a formal explanation for the persistence of data silos.
+abstract
+
+
+JEL Classification: 
+
+
+Keywords: 
+
+
+
+
+
+In many digital markets, platforms have created closed data ecosystems that restrict the flow of information across market participants. The digital display advertising market provides a prominent example. This 200+ billion industry relies on a complex and highly intermediated infrastructure, called ad-tech stack, in which ad space is bought and sold through automated real-time auctions. When a user visits a webpage, the publisher's ad server identifies an available ad slot and triggers the auction for the corresponding impression. The publisher's supply-side platform (SSP) then makes the impression available to potential buyers through an ad exchange, a digital marketplace where bids are placed in real time. Advertisers rely on DSPs to evaluate the impression and submit bids on their behalf.
+
+Major platforms may operate across several layers of the ad-tech stack, as the example of Google shows. The competitionandmarketsauthorityOnlinePlatformsDigital2020 documents that Google controls over 90% of the ad server market, 50–60% of the supply-side market, and 50–70% of the demand side through its various products (see Figure google-stack). Beyond its extensive presence in the ad-tech stack, Google operates a broader ecosystem of services that generate rich information about consumers. The combination of consumer-facing services and vertical integration within the ad-tech stack provides Google with a wealth of data that might, in principle, be leveraged to inform the bidding behaviour of its own DSPs.
+
+This is not just a thought experiment: the ReGoogleDigital2021 complaint alleges that Google's supply-side ad server shared raw user IDs exclusively with Google-owned DSPs, while providing only hashed identifiers to rival DSPs. These allegations raise a natural question: how does asymmetric access to consumer information shape competition in auction markets? Moreover, why do vertically integrated platforms preserve data silos rather than license data? Given that advertising accounts for the majority of platform revenues, the persistence of closed ecosystems suggests that retaining exclusivity over consumer data at the bidding stage outperforms alternative licensing agreement.
+
+figure[h]
+        figures/Fig1-reduced.png
+    Google's role in advertising intermediation, borrowed from the CMAyearcompetitionandmarketsauthorityOnlinePlatformsDigital2020 main report.
+    google-stack
+figure
+
+To answer these questions, we develop a static model in which two DSPs compete in a first-price auction with a public reserve price to purchase a single ad slot. We assume that each DSP privately values the impression. More precisely, values are i.i.d. discrete random variables representing the uncertain outcome of consumer interaction with the displayed ad. In addition to ensuring tractability, assuming discrete outcomes aligns with how performance campaigns are structured in practice: advertisers define a discrete set of target actions (such as clicks, sign-ups, or purchases) and have a distinct willingness to pay for each(Modern bidding platforms operationalize this through value-based bidding, which maps predicted consumer outcomes to discrete willingness-to-pay levels. Importantly, the number of discrete valuations in the model corresponds to the granularity of the advertiser's campaign: a campaign targeting a single action features binary outcomes (engagement or no engagement), whereas campaigns targeting richer conversion funnels feature multiple values.). The assumption of private values that are drawn from the same distribution is best interpreted as considering DSPs bidding on behalf of homogeneous products, with consumers having idiosyncratic tastes. We maintain independence to isolate the effect of information-asymmetry and obtain closed-form solutions, discussing in the appendix how affiliated values would affect our results.
+
+Our baseline model adopts binary valuations: with probability , the consumer's interaction with the displayed ad generates a high value for the bidder; otherwise, it yields a low value(The framework extends naturally to  discrete outcomes, as we show in the appendix.). We introduce a stark informational asymmetry between the two DSPs. One DSP is vertically integrated with an ad server, while the other is not. With exogenous probability , the publisher relies on the integrated server to manage its ad inventory. In such case, the server shares consumer-level information with its affiliated DSP, allowing it to observe its private value before bidding. With complementary probability , both DSPs only know the expected value of the impression. Thus, the parameter  can be interpreted, to a first approximation, as the share of publishers that rely on the integrated server to manage their ad inventory.
+
+We characterize the unique Bayes-Nash equilibrium of the FPA, in which both bidders randomize over the same interval. More precisely, the integrated DSP's strategy is monotone in its interim valuation: it splits the support into three ordered subintervals - corresponding to low, expected, and high valuations, in that order. The non-integrated DSP randomizes over the full support with an atom at the reserve price. In equilibrium, both bidders get positive expected revenue, with the integrated DSP earning consistently higher revenue. Equilibrium bidding strategies directly depend on the parameter , which captures the degree of informational asymmetry. The closed-form expressions we derive allow to easily perform comparative statics. Our main result shows that when  raises, competition softens and expected revenues of both bidders increase. Such competition softening outcome admits a natural interpretation in terms of mean-preserving spreads: when the integrated DSP is more frequently informed, its behavior becomes more polarized - aggressive when its value is high, yielding when it is low. This variability benefits the uninformed bidder, who enjoys easy wins when its opponent concedes while facing bounded losses when competition is fierce. On net, both bidders benefit. This monotonicity contrasts with the competition effects of targeting documented in related advertising settings: hummelWhenDoesImproved2017 show that in second-price auctions, improved targeting softens competition only beyond a threshold number of bidders, while bergemannTargetingAdvertisingMarkets2011 find that equilibrium prices are non-monotone in targeting precision, depending on the degree of market concentration. Note that this competition softening effect would hold even assuming affiliated values. If this were the case, the non-integrated DSP would face a winner's curse, which would make it bid even more conservatively. We maintain independence to isolate the pure information-asymmetry effect and obtain closed-form solutions. In order to measure consumer welfare, we look at the equilibrium probability that consumers engage with the displayed ads. We find that higher values of  lead to more relevant ads being displayed in equilibrium. 
+Building on our equilibrium analysis, we ask whether the integrated DSP would ever license data to its rival. To this end, we study arrangements that open the integrated platform's infrastructure: whenever consumer information is available, the competitor is granted access to its own value, while the integrated DSP retains the full informational endowment it derives from owning the infrastructure(We model the integrated DSP's information set as unchanged under licensing because it owns the data infrastructure through which consumer signals flow: such arrangement can forward those signals to the rival, but it cannot prevent the integrated DSP from reading what passes through its own ad-server.). We let the integrated platform extract the rival's full willingness to pay for data through a take-it-or-leave-it offer. Even in this extreme benchmark, the integrated platform prefers exclusivity across substantial parameter ranges, and uniformly so once consumers are highly likely to engage with ads (). The tradeoff is intuitive: licensing brings in a direct payment from the rival but erodes the auction-stage rents that informational asymmetry confers. When consumer engagement is likely, the integrated platform's edge from competing as the sole informed bidder grows faster than the rival's willingness to pay for access. Above , this rent-erosion channel dominates uniformly; below that threshold, exclusivity arises whenever both  and the reserve price are not too high. The reason is that the expected payoff of the integrated DSP under licensing is linear in , while under exclusivity it exhibits diminishing returns. Moreover, licensing is associated with high reserve prices because then the rival DSP is willing to pay more to avoid overspending on low-value impressions.
+
+To the best of our knowledge, our investigation provides the first formal explanation for why vertically integrated ad-tech platforms such as Google maintain closed data ecosystems. We characterise the precise boundary conditions under which this logic applies. We conclude our analysis with a calibration exercise providing evidence, in the context of click campaigns, that the parameter range where exclusivity dominates licensing reflects current market conditions.
+
+The remainder of the paper is organised as follows. Section sect:lit reviews the related literature. Section baseline-model introduces the model, characterises the unique Bayes-Nash equilibrium, and derives the comparative statics with respect to the information-asymmetry parameter . Section licensing studies the mandated data-sharing remedy and characterises the parameter region in which the integrated platform prefers to keep a closed ecosystem. Subsection sect:calibration calibrates the model to click-campaign data and shows that this region is empirically relevant. Section sect:conclusion concludes. Proofs and robustness extensions are collected in the appendix.
+Literaturesect:lit
+Our focus on FPA reflects the current state of open display advertising markets. Through the 2010's, ad exchanges progressively moved from second-price to first-price auction formats. despotakisFirstPriceAuctionsOnline2021 trace this shift to the widespread adoption of header bidding, whereby publishers broadcast bid requests to multiple exchanges simultaneously rather than sequentially. They show that, once publishers adopt header bidding, all exchanges switching to FPA is the unique equilibrium of the game. Consistent with this prediction, Google completed its transition to first-price rules in 2019, making FPA the standard across all major open exchanges.(See Google's https://blog.google/products/admanager/update-first-price-auctions-google-ad-manager/blog announcement. See also https://developers.google.com/authorized-buyers/rtb/startGoogle's Real-Time Bidding guide, which states: "The bid response is received and its bid enters the open auction, where it wins the impression because it is the highest bid". Walled-garden platforms where the exchange and publisher are vertically integrated (e.g., Amazon, Facebook) may retain second-price formats for their own inventory choiOptimizingReservePrices2023. Our model studies DSPs competing through an independent exchange, which is the setting where FPA is now universal.) alcobendasSlimShadingAd2021 provide auction-level empirical evidence from the Yahoo Ad Exchange's contemporaneous switch to first-price rules, documenting how DSPs adjusted their bid-shading strategies in response. From a theoretical perspective, lemeWhyCompetitiveMarkets2020 establish that FPA is the unique Nash equilibrium in a static game between competing exchanges, offering a complementary rationale for the industry-wide convergence. FPA is also considered more transparent, as there is no uncertainty in the final price upon winning. dengNonuniformBidscalingEquilibria2024 further show, through simulations of optimal bidding in an environment populated by autobidders, that FPA dominates both second-price and Vickrey-Clarke-Groves auctions in terms of bidders' welfare as well as auctioneer's profits. In the sponsored-search context, kimNonparametricEstimationSponsored2025 nonparametrically estimate advertiser valuations in weighted GSP auctions using Yahoo! data and show through counterfactuals that product-specific quality scoring can substantially raise search-engine revenue at the expense of advertiser profits and ad quality.
+The theoretical literature on asymmetric first-price auctions (FPAs) distinguishes between two main sources of asymmetry. The first strand examines ex-ante distributional asymmetries, where bidders draw valuations from distributions that differ in their stochastic properties. maskinAsymmetricAuctions2000 provide seminal results characterizing equilibria when value distributions are stochastically ordered. The second strand considers informational asymmetries with a common prior, where bidders share the same ex-ante value distributions but differ in their information about realized values. Within this informational asymmetry literature, most work has focused on common value settings, starting with wilsonCompetitiveBiddingAsymmetric1967 and engelbrecht-wiggansCompetitiveBiddingProprietary1983, with more recent contributions such as abrahamPeachesLemonsCookies2020 studying second-price auctions. The literature on FPAs with independent private values (IPV) and informational asymmetries is comparatively smaller: either all players know their own values martinez-pardinaFirstpriceAuctionsWhere2006, or the focus is on alternative auction formats compteWaitandSeeOptionAscending2004, miettinenInformationAcquisitionDutch2013. A growing body of work examines information acquisition in FPAs, though with IPV this literature has primarily focused on symmetric strategies hauschPrivateValuesAuctions1991, shiOptimalAuctionsInformation2012. bergemannFirstPriceAuctionsGeneral2017 characterize equilibrium behavior across general information structures, providing bounds on winning bid distributions and revenues.
+We contribute to the second strand by characterizing a closed-form mixed-strategy equilibrium for FPAs with IPV under structural informational asymmetries. This specific setting, in which one bidder may privately observe realized values while the other remains uninformed, is motivated by applications to digital advertising markets and analytical tractability. In programmatic advertising, vertically integrated platforms can observe consumer preferences through their broader digital ecosystem, creating precisely the type of interim informational advantage we model. From an ex-ante perspective, the resulting preference structure fits the framework of maskinAsymmetricAuctions2000, with the informed bidder's value distribution first-order stochastically dominating that of the uninformed bidder. This tractability allows us to derive explicit comparative statics and welfare implications, providing a foundation for analyzing competitive effects of data advantages in auction settings.
+Closest in spirit to our work is abrahamPeachesLemonsCookies2020, who study auction markets with dispersed information in the context of online advertising. Their framework features bidders with affiliated values and focuses primarily on second-price auctions, characterizing conditions under which the informed platform prefers to share information with competitors. Relatedly, arnostiAdverseSelectionAuction2016 show that when bidder values are positively correlated, second-price auctions for display advertising expose uninformed advertisers to adverse selection, and introduce modified second-bid auctions as a mechanism design response. Our setting differs in two key respects. First, we analyze first-price auctions, which have become the dominant format in display advertising. Second, we work with independent private values: vertically integrated platforms can access fine-grained behavioral data, such as detailed browsing history, that reveals idiosyncratic consumer preferences for specific products. This granular information generates value that is plausibly independent across competing DSPs, in contrast to the common value component arising from aggregate ad effectiveness. The IPV structure, combined with our focus on first-price auctions, yields qualitatively different equilibrium dynamics, notably the necessity of mixed strategies and the non-monotonic relationship between information asymmetry and competitive intensity. While Abraham et al. find that information sharing can arise as an equilibrium outcome under second-price rules, our analysis identifies conditions under which closed data ecosystems are strictly optimal under first-price competition, providing a complementary explanation for observed platform behavior.
+On the vertical integration dimension, dannunzioDigitalEcosystemsAdtech2024 study how vertical integration between a publisher and a supply-side intermediary affects competing publishers' revenue and content quality provision. Under diminishing returns to advertising to the same consumer, the integrated intermediary can observe whether consumers visiting the independent publisher are multi-homers who also visit the integrated one, and efficiently manages the frequency of ad exposure. We look at vertical integration spanning the full stack from demand to supply side, and provide a micro-founded analysis of the auction mechanism in light of information asymmetries on the supply side. dannunzioIntermediariesOnlineAdvertising2024 examine how ad intermediaries strategically choose whether to disclose consumer information to advertisers when selling ad impressions. Here too, consumers multi-home and returns to advertising are diminishing. They find that when advertising markets are "thin" (few advertisers targeting a specific consumer type), intermediaries prefer to make targeting less granular to maintain higher ad prices, rather than withholding information about cross-publisher ad exposure. More broadly, our analysis of closed data ecosystems relates to general theories of digital ecosystems, such as rhodesDigitalEcosystemsData2024 and heidhuesTheoryDigitalEcosystems2024. 
+Modelbaseline-model
+Setup
+
+Bidders - Two DSPs, denoted  and , compete in a first-price auction for a single indivisible ad-slot. The auction has an exogenous reserve price , which is common knowledge. The private value of the ad-slot for  is , where . Valuations  are independently and identically distributed, with
+equation*
+ P(v_i = v_H) = p (0,1).
+equation*
+
+We denote  and we assume . The parameter  represents the probability that a consumer engages with the displayed ad in the manner targeted by the campaign. In our baseline specification, we interpret engagement as a click, corresponding to a binary performance campaign; the extension to richer outcome spaces is immediate (see Appendix sect:N-values). 
+
+
+Information - DSPs have asymmetric information about valuations. We assume that  is vertically integrated within the ad-tech stack, and thus observes the realization of both valuations  with exogenous probability ; with complementary probability , it only knows the distribution of values(Assuming that  observes both valuations is without loss of generality in our setting: 's payoff depends only on , and 's strategy does not condition on  since  is uninformed. However, introducing 's observation of  from the outset provides a natural foundation for the data licensing analysis in Section licensing, where  may choose to share information about  with .). Accordingly, the type of  is
+equation*
+ t_1 T_1 :=  v_L, v_H, ,
+equation*
+
+where  indicates that  is informed that its valuation is , and  represents the case where it did not observe the realization of values. The induced distribution over 's types is
+equation*
+P(t_1 = v_L) = (1 - p), 
+P(t_1 = v_H) = p, 
+P(t_1 = ) = 1 - .
+equation*
+
+We assume  only knows the distribution of valuations. Consequently, it always values the ad-slot at . 
+
+
+Timing - Nature draws  and determines whether  observes realizations or not. DSPs simultaneously place their bids. The highest bid above the reserve price  wins the auction. If no bid exceeds the reserve price, the object remains unassigned. Draws are solved with a fair coin toss. 
+
+
+Strategies and Payoffs - We assume that a bidder never bids above his valuation. The strategy of  is a type-contingent collection
+equation*
+ _1 := (_1^t_1)_t_1 T_1,
+equation*
+
+where  denotes the strategy played by  when its type is . We denote  the c.d.f. associated to . The strategy of  is denoted , with  the associated c.d.f. The expected utility of  if its type is  and  is played is(DSPs' payoff function reflects their incentive to act in advertisers' best interest: a DSP trades off the fee gained from consumer engagement () against the cost of acquiring an impression ().)
+equation*
+ Eu_1 ( _1,  _2    t_1  ) := _r^ (t_1 - b) F_2(b) d F_1^t_1(b).
+equation*
+
+The expected utility of  when  is played is
+equation*
+Eu_2 ( _2, _1 ) := _r^ (- b) [ (1 - p) F_1^v_L(b) + p F_1^v_H(b) + (1 - ) F_1^(b) ] d F_2(b)
+equation*
+
+We solve for a Bayesian Nash equilibrium of this first-price auction.
+
+Equilibrium Analysis
+We characterize the unique equilibrium of the asymmetric information game in three steps. First, we establish that no pure strategy equilibrium exists. Second, we derive necessary conditions on the support structure of equilibrium distributions. Third, we construct the equilibrium distributions explicitly and verify uniqueness.
+
+In the following, we restrict attention to the case in which . Given that bidders never bid above their valuations, it is without loss to assume that  drops out of the auction whenever . We will show that the reserve price anchors the lower bound of equilibrium bidding supports.(See lizzeriUniquenessExistenceEquilibrium2000 for a general treatment of reserve prices in asymmetric auctions with affiliated signals. Note also that a public reserve price prevents mechanism credibility issues banchioDynamicThreatsCredible.) The case where all valuations exceed the floor price yields an isomorphic structure with the anchor shifted from  to  (Appendix sect:nonbinding-floor).
+
+The FPA does not admit an equilibrium in pure strategies. The key driver is that  is always uninformed: her effective valuation is degenerate at . In a first-price auction, any pure bid by a single-type player becomes a fixed target for opponent types with valuations exceeding the bid, who can profitably -overbid. This forces  to randomize. The result does not depend on 's valuations being discrete; see Appendix sect:continuous-values for the continuous-valuations case.
+
+propprop:no-pure
+There exists no equilibrium in pure strategies.
+prop
+
+proof
+Let  be a pure strategy of  . Given a type , the payoff of  if he plays  and  plays  is:
+
+equation*
+u_1(b_1, b_2     t_1) = ( t_1 - b_1^t_1 ) 1( b_1^t_1 > b_2, r )
+equation*
+
+The expected payoff for  is
+
+equation*
+ Eu_2 (b_2, b_1 ) = (- b_2) [ (1 - p) + p 1(b_2 > b_1^v_H, r) + (1 - ) 1(b_2 > b_1^, r) ].
+equation*
+
+Assume that in equilibrium  plays the pure strategy . If  we claim that there exists no best response of  to . Indeed, for any  arbitrarily small, playing  is a profitable deviation for . Therefore, in any equilibrium  must play a mixed strategy. Now assume that  plays the pure strategy  and let  be the c.d.f. associated to the mixed strategy  of . In equilibrium,  must be indifferent across all bids . Formally, there exists a constant  such that 
+
+equation*
+ (- b_2) [ (1 - p) + p 1( b_2 > b_1^v_H, r) + (1 - ) 1(b_2 > b_1^, r ) ] = k.
+equation*
+
+For any , there exists at most a finite number of  satisfying the indifference condition above. Therefore,  must be a finite set. But then  could profitably deviate by  overbidding .
+
+proof
+
+We now focus on mixed strategies equilibria. In the following, we provide necessary conditions that pin down the structure of candidate equilibria, gradually building intuition. Let us define:
+
+
+b_2 = inf(Supp(F_2)),  b_2 = sup(Supp(F_2)),
+
+
+and for 
+
+
+b_1^t_1 = inf(Supp(F_1^t_1)),  b_1^t_1 = sup(Supp(F_1^t_1)).
+
+
+We can resort to two classical results in first-price auctions literature, established by maskinEquilibriumSealedHigh2000.(All relevant conditions are satisfied:
+itemize
+    [-] Monotonicity: Payoffs are strictly increasing in own type. For , since , type  has strictly higher value than type . For , the condition is vacuously satisfied.
+    [-] Weak supermodularity: Follows from risk neutrality.
+    [-] Private values: Each bidder's payoff depends only on their own type.
+    [-] Affiliation: Since  has a degenerate type, the joint distribution over types is determined entirely by the marginal over . The affiliation condition is thus trivially satisfied.
+itemize
+) First, in equilibrium there must be a form of monotonicity in the bidding behavior of . More precisely,  always bids higher when  compared to when . Secondly, the support of the equilibrium distribution of winning bids must be an interval, with no mass points in its interior.
+
+lemlem:monotonicity
+Let  be an equilibrium of the FPA. Then we have:
+
+equation*
+b_1^ b_1^v_H
+equation*
+lem
+proof
+    Follows from maskinEquilibriumSealedHigh2000, Proposition 1.
+proof
+
+lemlem:interval
+Let  be the support of the distribution of winning bids in a given equilibrium . Then,  with . Moreover, there are no mass points in .
+lem
+proof
+    Follows from maskinEquilibriumSealedHigh2000, Proposition 3.
+proof
+
+Given these general results, we can further pin down the structure of an equilibrium in our framework. More precisely, we can characterize the shape of equilibrium distributions' supports.
+
+propprop:eqm-supports
+Let  be an equilibrium of the FPA. Then:
+
+itemize
+    [-]  for some .
+
+    
+
+    [-]  for some .
+
+    
+
+    [-] .
+itemize
+prop
+
+In equilibrium, the two bidders mix over a common support .  mixes across the whole interval, whereas  splits such interval into two, ordered subintervals: he plays in the lower subinterval  when , whereas he mixes in the upper subinterval  when . The figure below illustrates the shape of supports in a candidate equilibrium.
+
+center
+
+every picture/.style=line width=0.75pt
+
+tikzpicture[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+
+[line width=2.25]  [dash pattern=on 2.53pt off 3.02pt]  (144,93.2) - (200.2,93.6) ;
+[shift=(200.2,93.6), rotate = 180.41] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[shift=(144,93.2), rotate = 180.41] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (200.2,93.6) - (320.2,94.6) ;
+[shift=(320.2,94.6), rotate = 180.48] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (320.2,94.6) - (450.2,94.6) ;
+[shift=(450.2,94.6), rotate = 180] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[line width=2.25]  [dash pattern=on 2.53pt off 3.02pt]  (450.2,94.6) - (517.2,94.6) ;
+[shift=(517.2,94.6), rotate = 180] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 27   ,draw opacity=0.63 ][line width=1.5]  (202.2,110.6) .. controls (202.12,115.27) and (204.41,117.64) .. (209.08,117.72) - (250.58,118.43) .. controls (257.25,118.54) and (260.54,120.93) .. (260.46,125.6) .. controls (260.54,120.93) and (263.91,118.66) .. (270.58,118.77)(267.58,118.72) - (312.08,119.48) .. controls (316.75,119.56) and (319.12,117.27) .. (319.2,112.6) ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=1.5]  (324.2,112.6) .. controls (324.16,117.27) and (326.47,119.62) .. (331.14,119.66) - (376.64,120.02) .. controls (383.31,120.07) and (386.62,122.43) .. (386.59,127.1) .. controls (386.62,122.43) and (389.97,120.13) .. (396.64,120.18)(393.64,120.16) - (442.14,120.55) .. controls (446.81,120.58) and (449.16,118.27) .. (449.2,113.6) ;
+[line width=1.5]  (449.2,58.6) .. controls (449.22,53.93) and (446.9,51.59) .. (442.23,51.57) - (334.17,51.14) .. controls (327.5,51.11) and (324.18,48.77) .. (324.2,44.1) .. controls (324.18,48.77) and (320.84,51.09) .. (314.17,51.06)(317.17,51.07) - (207.23,50.63) .. controls (202.56,50.61) and (200.22,52.93) .. (200.2,57.6) ;
+
+(137,66.4) node [anchor=north west][inner sep=0.75pt]    ;
+(195,62.4) node [anchor=north west][inner sep=0.75pt]    ;
+(314,58.4) node [anchor=north west][inner sep=0.75pt]    ;
+(444,61.4) node [anchor=north west][inner sep=0.75pt]    ;
+(509,64.4) node [anchor=north west][inner sep=0.75pt]    ;
+(218,133.4) node [anchor=north west][inner sep=0.75pt]  [color=rgb, 255:red, 208; green, 2; blue, 27   ,opacity=0.63 ]  ;
+(344,135) node [anchor=north west][inner sep=0.75pt]  [color=rgb, 255:red, 144; green, 19; blue, 254   ,opacity=1 ]  ;
+(294,18) node [anchor=north west][inner sep=0.75pt]  [color=rgb, 255:red, 0; green, 0; blue, 0   ,opacity=1 ]  ;
+tikzpicture
+center
+
+Proof of the Proposition
+
+In order to prove Proposition prop:eqm-supports, we resort to the following intermediate results.
+
+lemlem:bounds
+In any equilibrium we have:
+
+enumerate
+
+    .
+
+    
+
+    .
+enumerate
+lem
+
+proof
+The first claim is trivial. In equilibrium, no player ever bids strictly more than the highest bid of his opponent.
+
+To prove the second claim, first notice that it is easy to show that in equilibrium . If not, then  would get an expected payoff of zero from bids in  when his type is . We next show that . By contradiction let . Then we would have:
+equation*
+r < b_2 b_1^
+equation*
+
+If we had , then clearly  could profitably deviate to : the probability of winning would always be  but the markup would increase. If instead we had , we argue that  could not be a mass point for . Indeed, if  was a mass point for , then clearly it could not be a mass point also for : any of the two bidders would profitably shift such a mass to . But then  would be putting a mass on a bid at which he earns zero expected profits, which can not happen in equilibrium. Given that  can not be a mass point for , again  could profitably deviate to . This shows that  in equilibrium.
+proof
+
+lemlem:inclusion
+In equilibrium,  for all .
+lem
+
+proof
+ By contradiction, suppose there exists . Then it must be . Let  be such that no bid in  is contained in . We claim that  could profitably deviate to  when . Indeed, the probability of winning for  would be unaffected, and the markup for  is higher at  than at .
+proof
+
+lemlem:lowest
+In equilibrium, we have .
+lem
+
+proof
+By contradiction, assume that . Then, no bid in  is contained in . From the previous lemma, we know that . Therefore, in equilibrium  must be indifferent between  and 
+
+align*
+&(- r)(1-p)_ = (- b_1^)((1 - p) + (1 - ) F_1^(b_1^) )_
+
+ &F_1^(b_1^) > 0
+align*
+
+Thus,  should be a mass point for , which contradicts the fact that there are no interior mass points in the support of the equilibrium winning bid distributions. As a consequence, we must have .
+proof
+
+lemlem:union
+In equilibrium we have 
+lem
+
+proof
+It suffices to show that . By contradiction, suppose there exists  such that  for . Then, there exists  such that  is not contained in . We claim that  could profitably deviate to . Indeed, the winning probability would be unaffected, and the markup for  is higher at  than at .
+proof
+
+We can now put together all the intermediate results, and prove the proposition.
+
+proof
+We showed that
+
+equation*
+ Supp(F_2) = Supp(F_1^v_H) Supp(F_1^) = [b, b] [r, ].
+equation*
+
+Moreover, we showed that . Since we know that , it must be that
+
+aligneq:supp-d1
+Supp(F_1^) = [r, b_1^],  Supp(F_1^v_H) = [b_1^, b]
+align
+
+and consequently:
+
+equationeq:supp-d2
+ Supp(F_2) = [r, b].
+equation
+
+proof
+
+We can now characterize the unique BNE that satisfies the necessary conditions provided so far.
+
+propmixed-BNE-main
+
+There exists a unique BNE in completely mixed strategies  where the associated C.D.F.s are given by:
+
+equation*
+ F_1^v_H^*(b) = cases
+     0, & b < b 
+
+     1p ( (1 - p)(- r)- b - (1 - p) ), & b [ b, b ] 
+
+     1, & b > b
+ cases,  F_1^^*(b) = cases
+     0, & b < r 
+
+     11 -  ( (1 - p)(- r)- b - (1 - p) ), & b [ r, b ] 
+
+     1, & b > b
+ cases
+equation*
+
+
+small
+equation*
+ F_2^*(b) = cases
+        0, & b < r 
+
+        (1 - p) (- r) [ c +(- r) ](v_H - r)(- b), &  b [ r,  b ] 
+
+        (1 - p)[v_H + (- r)]v_H - b,  & b [ b,  b ] 
+
+        1, & b > b
+    cases
+equation*
+small
+
+prop
+
+proof
+By Proposition prop:eqm-supports, any equilibrium must have supports with the structure described in conditions eq:supp-d1 and eq:supp-d2. The expected payoff of  when bidding  given that  plays  is:
+
+equation*
+    Eu_2 (r, (_1^v_H^*, _1^^* ) ) = (1 - p) (- r)
+equation*
+
+where we are using that  can not be a mass point for  when . Since  must be indifferent across all bids played with positive probability, we have that :
+
+align*
+    & (- b) [ (1 - p) + (1 - ) F_1^^*(b) ] = (1 - p) (- r) 
+
+     & F_1^^*(b) = 11 -  ( (1 - p)(- r)- b - (1 - p) )  b [r, b]
+align*
+
+We can pin down  by imposing:
+
+equation*
+     F_1^^*(b) = 1   b = (1 - ) + (1 - p) r1 - p
+equation*
+
+Clearly ,  and it can further be shown that , which makes it a valid C.D.F. We now pin down  leveraging the indifference condition of  for bids :
+
+align*
+    & (- b) [ (1 - p) + p F_1^v_H^*(b) + (1 - )  ] = (1 - p) (-r) 
+
+     & F_1^v_H^*(b) = 1p ( (1 - p)(- r)- b - (1 - p) )
+align*
+
+We can determine  by imposing:
+
+align*
+ F_1^v_H^*(b) = 1   b = - (1 - p)(- r)
+align*
+
+It is straightforward to check that  is indeed a C.D.F. We can now leverage indifference conditions of  to pin down . If , indifference of  across all bids  requires that:
+
+equation*
+ F_2^*(b) = _v_Hv_H - b  b [b, b]
+equation*
+
+Evaluating  at  we get:
+
+equation*
+    F_2^*(b) = 1   _v_H = (1 - p)[v_H + (- r)]
+equation*
+
+Moreover, since  we must have:
+
+align*
+    _- b = _v_Hv_H - b  
+    _ = (1 - p) (- r) [v_H +(- r) ]v_H - r
+align*
+
+Therefore:
+
+equation*
+     F_2^*(b) = cases
+        (1 - p) (- r) [v_H +(- r) ](v_H - r)(- b), & b [ r,  b ] 
+
+        (1 - p)[v_H + (- r)]v_H - b, & b [ b,  b ]
+    cases
+equation*
+
+We now show that no player can unilaterally profitably deviate from the candidate equilibrium distributions. Note first that, for any :
+
+equation*
+ cases
+   E u_1 ( _1, _2^*    t_1 = v_H ) = _r^b (v_H - b) _1(b) F_2^*(b) = _v_H 
+
+   E u_1 ( _1, _2^*    t_1 = ) = _r^b (- b) _1(b) F_2^*(b) = _
+ cases
+equation*
+
+and similarly for all :
+
+equation*
+E u_2 ( _2, _1^v_H^*, _1^^* ) = _r^b (- b) _2(b) [ (1 - p) + p F_1^v_H^* + (1 - ) F_1^^* ] = (1 - p)(- r)
+equation*
+
+Therefore,  are indifferent with respect to any mass redistribution within . What remains is to check that no player can profitably deviate outside of the supports. Clearly, it is never profitable to bid less than the floor price . Now suppose that  and that  deviates to . A simple calculation yields:
+
+equation*
+ E u_1 ( b-, _2^*    t_1 = v_H ) = (v_H - (b - ) ) F_2 ( b - ) < _v_H  > 0
+equation*
+
+Similarly,  can not profitably deviate to :
+
+equation*
+ E u_1 ( b + , _2^*    t_1 = v_H ) = (v_H - (b + ) ) < _v_H  > 0
+equation*
+
+Analogous reasoning shows that, if , it is not profitable for  to deviate to .
+
+equation*
+ E u_1 ( b + , _2^*    t_1 = ) = ( - (b + ) ) F_2 ( b + ) < _  > 0
+equation*
+
+Turning to , we only need to check that she has no incentive to play . Indeed:
+
+equation*
+ E u_2 ( b + , _1^v_H^*, _1^^* ) = ( - (b + ) ) < (1 - p) (- r)  > 0
+equation*
+
+This concludes the proof that  is a BNE of the game.
+
+Uniqueness. The strategy profile  is the unique equilibrium. Given the support structure identified in the previous Lemmas, the boundary conditions uniquely determine  and , while the indifference conditions combined with continuity at  uniquely pin down the bidding CDFs.
+proof
+
+figure[h]
+        tikzpicture[xscale=7, yscale=5]
+0.7        2.5          0.6      0.5        *
+
+((1-)*+ *(1-)*)/(1-*)
+    - *(1-)*(    (1-)*(+ *(
+1.7
+    1.15
+
+[->] (-0.1,0) - (,0) node[right] ;
+    [->] (0,-0.1) - (0,) node[above] ;
+
+[anchor=west, font=] at (0.08,1.08) ;
+    [anchor=west, font=] at (0.08,0.98) ;
+    [anchor=west, font=] at (0.08,0.88) ;
+    [anchor=west, font=] at (0.08,0.78) ;
+
+[dotted] (,0) - (,0.50);
+    [below] at (,0) ;
+
+    [dotted] (,0) - (,1.0);
+    [below] at (,0) ;
+
+    [dotted] (,0) - (,1.0);
+    [below] at (,0) ;
+
+[black, thick, domain=:, samples=100]
+        plot (, /(- ));
+    [black] at (0.95,0.55) ;
+
+[red!70!black, thick, domain=:, samples=100]
+        plot (, (1/(1-)) * (*(1-)*(- *(1-)));
+    [red!70!black, thick] (,1) - (,1);  [red!70!black] at (0.88,0.30) ;
+
+[blue!70!violet, thick] (,0) - (,0);  [blue!70!violet, thick, domain=:, samples=100]
+        plot (, (1/(*)) * (*(1-)*(- (1-*)));
+    [blue!70!violet] at (1.58,0.58) ;
+
+tikzpicture
+     Equilibrium bidding distributions for selected parameter values.
+    bidding-dist
+figure
+
+Figure bidding-dist provides a graphical representation of equilibrium distributions for given values of . In the picture, we see that  first-order stochastically dominates : when  receives the signal , she bids more aggressively than her opponent. When both  and  have no information, on the other hand, there is no dominance relationship in general. This holds across parameter values:
+
+lemlem:stoch
+ first order stochastically dominates  for all parameter values .
+lem
+
+Comparative Statics
+Bidding Strategies
+We can now discuss how relevant parameters affect the equilibrium bidding strategies. First, we examine closely the behavior of supports. Recall that:
+
+equation*
+ supp( _1^^* ) = [r, b],  supp( _1^v_H^* ) = [b, b],  supp( _2^* ) = [r, b]
+equation*
+
+where:
+
+align*
+ &b(p, v_H, , r) = (1 - ) + (1 - p) r1 - p 
+
+ &b(p, v_H, , r) = - (1 - p)(- r)
+align*
+
+cor
+Consider the BNE characterized above. Then:
+
+itemize
+    [-]  and  are increasing in  and in .  Furthermore,  increases, i.e.  increases faster than .
+
+    
+
+    [-]  and  are decreasing in .  Furthermore,  increases, i.e.  decreases faster than .
+
+    
+
+    [-]  and  are increasing in . Furthermore,  and  decrease, i.e.  increases faster than , which in turn increases faster than .
+itemize
+
+cor
+
+every picture/.style=line width=0.75pt
+
+tikzpicture[x=0.7pt,y=0.7pt,yscale=-1,xscale=1]
+
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (20.55,211.56) - (172.9,212.26) ;
+[shift=(172.9,212.26), rotate = 180.26] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[shift=(20.55,211.56), rotate = 180.26] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (172.9,212.26) - (243.89,212.96) ;
+[shift=(243.89,212.96), rotate = 180.57] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 27   ,draw opacity=0.63 ][line width=1.5]  (20.55,222.07) .. controls (20.55,226.74) and (22.88,229.07) .. (27.55,229.07) - (87.1,229.07) .. controls (93.77,229.07) and (97.1,231.4) .. (97.1,236.07) .. controls (97.1,231.4) and (100.43,229.07) .. (107.1,229.07)(104.1,229.07) - (166.64,229.07) .. controls (171.31,229.07) and (173.64,226.74) .. (173.64,222.07) ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=1.5]  (174.18,221.7) .. controls (174.15,226.37) and (176.46,228.72) .. (181.13,228.76) - (199.97,228.9) .. controls (206.64,228.95) and (209.95,231.31) .. (209.92,235.98) .. controls (209.95,231.31) and (213.3,229) .. (219.97,229.05)(216.97,229.03) - (238.82,229.2) .. controls (243.49,229.23) and (245.84,226.92) .. (245.87,222.25) ;
+[line width=1.5]  (242.42,180.84) .. controls (242.42,176.17) and (240.09,173.84) .. (235.42,173.84) - (141,173.84) .. controls (134.33,173.84) and (131,171.51) .. (131,166.84) .. controls (131,171.51) and (127.67,173.84) .. (121,173.84)(124,173.84) - (27.55,173.84) .. controls (22.88,173.84) and (20.55,176.17) .. (20.55,180.84) ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (369.7,46.57) - (522.38,47.46) ;
+[shift=(522.38,47.46), rotate = 180.34] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[shift=(369.7,46.57), rotate = 180.34] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (547.58,47.7) - (593.54,48.36) ;
+[shift=(593.54,48.36), rotate = 180.81] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+(522.38,47.46) .. controls (525.94,33.09) and (537.7,34.16) .. (546.5,46.15) ;
+[shift=(547.58,47.7), rotate = 236.48] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+(593.54,48.36) .. controls (605.89,34.56) and (628.91,29.12) .. (651.45,47.45) ;
+[shift=(652.83,48.6), rotate = 220.6] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (593.54,48.36) - (652.83,48.6) ;
+[shift=(652.83,48.6), rotate = 180.24] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (522.38,47.46) - (547.58,47.7) ;
+[shift=(547.58,47.7), rotate = 180.56] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (372.66,213.69) - (444.61,213.88) ;
+[shift=(444.61,213.88), rotate = 180.16] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[shift=(372.66,213.69), rotate = 180.16] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (523.9,214.6) - (570.89,214.6) ;
+[shift=(570.89,214.6), rotate = 180] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (444.61,213.88) - (523.9,214.6) ;
+[shift=(523.9,214.6), rotate = 180.52] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 0; green, 0; blue, 0   ,draw opacity=1 ][line width=2.25]  [dash pattern=on 2.53pt off 3.02pt]  (570.89,214.6) - (594.38,214.6) ;
+[shift=(594.38,214.6), rotate = 180] [color=rgb, 255:red, 0; green, 0; blue, 0   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+(523.9,214.6) .. controls (492.4,192.23) and (465.09,198.49) .. (446.06,212.77) ;
+[shift=(444.61,213.88), rotate = 321.74] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+(594.38,214.6) .. controls (587.55,201.93) and (577.55,206.63) .. (572.05,213.11) ;
+[shift=(570.89,214.6), rotate = 305.64] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+[color=rgb, 255:red, 0; green, 0; blue, 0   ,draw opacity=1 ][line width=2.25]  [dash pattern=on 2.53pt off 3.02pt]  (375.63,376.8) - (468.69,377.01) ;
+[shift=(375.63,376.8), rotate = 180.13] [color=rgb, 255:red, 0; green, 0; blue, 0   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (566.22,377.81) - (593.76,378.38) ;
+[shift=(593.76,378.38), rotate = 181.2] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (468.69,377.01) - (528.99,377.59) ;
+[shift=(528.99,377.59), rotate = 180.55] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[shift=(468.69,377.01), rotate = 180.55] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (528.99,377.59) - (566.22,377.81) ;
+[shift=(566.22,377.81), rotate = 180.33] [color=rgb, 255:red, 208; green, 2; blue, 5   ,draw opacity=0.53 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+[color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (593.76,378.38) - (604.93,378.6) ;
+[shift=(604.93,378.6), rotate = 181.11] [color=rgb, 255:red, 144; green, 19; blue, 254   ,draw opacity=1 ][line width=2.25]    (0,7.83) - (0,-7.83)   ;
+(375.63,376.8) .. controls (390.96,359.9) and (443.46,358.04) .. (467.27,375.89) ;
+[shift=(468.69,377.01), rotate = 219.53] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+(528.99,377.59) .. controls (532.57,364.85) and (555.35,365.8) .. (565.07,376.43) ;
+[shift=(566.22,377.81), rotate = 233.11] [fill=rgb, 255:red, 0; green, 0; blue, 0   ][line width=0.08]  [draw opacity=0] (12,-3) - (0,0) - (12,3) - cycle    ;
+(593.76,378.38) .. controls (593.02,369.08) and (604.93,367.49) .. (604.93,378.6) ;
+[line width=1.5]    (338.22,61.85) - (260.2,150.6) ;
+[shift=(340.2,59.6), rotate = 131.32] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=1.5]    (14.21,-4.28) .. controls (9.04,-1.82) and (4.3,-0.39) .. (0,0) .. controls (4.3,0.39) and (9.04,1.82) .. (14.21,4.28)   ;
+[line width=1.5]    (337.2,211.56) - (265.2,210.6) ;
+[shift=(340.2,211.6), rotate = 180.76] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=1.5]    (14.21,-4.28) .. controls (9.04,-1.82) and (4.3,-0.39) .. (0,0) .. controls (4.3,0.39) and (9.04,1.82) .. (14.21,4.28)   ;
+[line width=1.5]    (342.16,349.4) - (266.2,267.6) ;
+[shift=(344.2,351.6), rotate = 227.12] [color=rgb, 255:red, 0; green, 0; blue, 0   ][line width=1.5]    (14.21,-4.28) .. controls (9.04,-1.82) and (4.3,-0.39) .. (0,0) .. controls (4.3,0.39) and (9.04,1.82) .. (14.21,4.28)   ;
+
+(14.44,184.47) node [anchor=north west][inner sep=0.75pt]    ;
+(169.26,182.91) node [anchor=north west][inner sep=0.75pt]    ;
+(238.11,184.42) node [anchor=north west][inner sep=0.75pt]    ;
+(62.17,238.54) node [anchor=north west][inner sep=0.75pt]  [font=,color=rgb, 255:red, 208; green, 2; blue, 27   ,opacity=0.63 ]  ;
+(176.53,240.42) node [anchor=north west][inner sep=0.75pt]  [font=,color=rgb, 255:red, 144; green, 19; blue, 254   ,opacity=1 ]  ;
+(108.28,146.79) node [anchor=north west][inner sep=0.75pt]  [font=,color=rgb, 255:red, 0; green, 0; blue, 0   ,opacity=1 ]  ;
+(364.59,19.17) node [anchor=north west][inner sep=0.75pt]    ;
+(516.74,17.47) node [anchor=north west][inner sep=0.75pt]    ;
+(587.75,17.67) node [anchor=north west][inner sep=0.75pt]    ;
+(589.06,184.37) node [anchor=north west][inner sep=0.75pt]    ;
+(518.99,183.81) node [anchor=north west][inner sep=0.75pt]    ;
+(368.54,184.79) node [anchor=north west][inner sep=0.75pt]    ;
+(371.53,348.65) node [anchor=north west][inner sep=0.75pt]    ;
+(524.35,347.03) node [anchor=north west][inner sep=0.75pt]    ;
+(583.98,348.87) node [anchor=north west][inner sep=0.75pt]    ;
+(264,70.4) node [anchor=north west][inner sep=0.75pt]    ;
+(284,185.4) node [anchor=north west][inner sep=0.75pt]    ;
+(273,310.4) node [anchor=north west][inner sep=0.75pt]    ;
+
+tikzpicture
+
+Above is a graphical representation of the result. Intuitively, as  and  increase the ad slot gets more valuable, inducing DSPs to start playing higher bids. More precisely, the upper bounds of  and  move to the right, whereas both the lower bound and the upper bound of  shift to the right: conditional on being type ,  not only starts playing higher bids but she also stops submitting relatively low bids. When  increases, i.e. when  gets access to user preferences more frequently, both  and  start submitting lower bids. Finally, when the floor price  increases, DSPs are forced to stop submitting low bids, and at the same time they start including slightly higher bids in their supports. In order to understand more thoroughly how fundamental parameters shape bidding behavior, we perform comparative statics on the equilibrium distributions.
+
+cor
+Let  be the equilibrium C.D.F. characterized above. Then:
+
+itemize
+    [1.]  are decreasing in , in  and in ;
+
+    
+
+    [2.]  are increasing in .
+itemize
+
+cor
+
+Combining our comparative statics results, we conclude that both DSPs play more aggressively if either the value of the ad slot or the floor price increase. Indeed, DSPs not only include increasingly higher bids in their supports, but they also redistribute mass from low bids to high bids. As a consequence, competition is intensified. An increase in  instead relaxes competition. This follows directly from the fact that all equilibrium CDFs are increasing in . Additionally, both DSPs shrink their supports and shift mass from high bids to low bids, further reinforcing this competitive softening effect. 
+The economic intuition behind this result is as follows. First, if  gets access to user preferences more frequently, the probability that she acknowledges the ad slot to be worthless for her increases. In this state of the world,  drops from the auction and the best reply for  is to bid the lowest acceptable bid. Therefore,  has incentives to move mass from relatively high bids towards the floor price . Secondly, as  shifts mass away from high bids, also  has incentives to emulate her opponent, in order to soften competition and increase the profit margin in case of a win. Overall, these comparative statics reflect the strategic complementarity of bids in first-price auctions. 
+Revenues
+
+Let us determine the equilibrium revenues of  and compare the two in order to quantify the impact of asymmetric information.
+
+correvenues-comparative
+The equilibrium expected revenues of  are:
+
+align*
+ R_1 (p, v_H, , r) &= (1 - p)[ v_H+ (- r) ] [ p(v_H - r) + (1 - )(- r) ]v_H - r 
+
+ R_2(p, v_H, , r) &= (1 - p) (- r)
+align*
+
+Moreover, we have that:
+itemize
+    [-]   for all parameter values.
+
+    
+
+    [-]  is increasing in  and in  for .
+
+    
+
+    [-]  is concave in  for .
+
+    
+
+    [-]  is decreasing in  for .
+
+    
+
+    [-] Define . The informational revenue gap  is hump-shaped in  if : it achieves a unique interior maximum at some  and is strictly decreasing on . If , the informational revenue gap is monotonically increasing in .
+itemize
+cor
+
+The last property follows from a structural feature of  that will also play a central role in the data licensing analysis of Section licensing.
+
+lemR1-properties
+    The revenue function  is increasing in  and such that it changes concavity at most once: it is either concave throughout, or convex for low values of  and then concave.
+lem
+
+The proof is available in the Appendix. Lemma R1-properties establishes that the competition-softening mechanism exhibits diminishing returns:  is eventually concave in , and once the marginal return to information access begins to decline, the decline only deepens. Combined with the linearity of  in , this is what drives the last property of the Corollary:  grows at the constant rate  per unit of , while 's growth rate is eventually decreasing. When the floor price is below , the constant-rate growth of  eventually overtakes the decelerating growth of , so the gap peaks in the interior and then narrows. Figure revenues-plot(a) illustrates these patterns.
+
+figure[h]
+        subfigure[b]0.45
+                tikzpicture
+axis[
+    width=,
+    height=0.8,
+    xlabel=,
+    xmin=0, xmax=1,
+    ymin=0,
+    xtick=0,1,
+    ytick=,
+    axis lines=left,
+    axis line style=-,
+    xlabel style=at=(ticklabel* cs:1), anchor=west,
+    clip=false,
+    samples=100,
+    domain=0:1,
+    smooth,
+]
+
+2
+1
+0.2
+0.5
+
+[violet, very thick] 
+    (x * (1-) * (+ x*(* (*(- x*) + (1-x)*(/ (- x*)
+ node[pos=0.85, above left, violet] ;
+
+[black, very thick] 
+    x * (1-) * (- )
+ node[pos=0.85, below right, black] ;
+
+axis
+tikzpicture
+         Equilibrium revenues vs. .
+    subfigure
+        subfigure[b]0.45
+                tikzpicture
+axis[
+    width=,
+    height=0.8,
+    xlabel=,
+    xmin=0, xmax=1,
+    ymin=0,
+    xtick=0,1,
+    ytick=,
+    axis lines=left,
+    axis line style=-,
+    xlabel style=at=(ticklabel* cs:1), anchor=west,
+    clip=false,
+    samples=100,
+    domain=0:1,
+    smooth,
+]
+
+2
+0.2  0.7
+
+[violet, very thick] 
+    (* (1-x) * (+ *x**(1-)) * (x*(- **x*) + (1-)*x**(1-))) / (- **x*)
+ node[pos=0.3, above left, violet] ;
+
+[black, very thick] 
+    * (1-x) * x * * (1-)
+ node[pos=0.4, below, black] ;
+
+axis
+tikzpicture
+         Equilibrium revenues vs. .
+    subfigure
+    Equilibrium revenues as functions of  and .
+    revenues-plot
+figure
+
+As expected, preferential access to user data significantly benefits . There are two notable features to highlight. First, as  gains more frequent access to data, not only does  benefit from increased revenues, but  also experiences a revenue boost. This is a direct consequence of softened competition, as we pointed out in the previous comparative statics analysis. Second, revenues are maximized when  takes on intermediate values, corresponding to cases where there is greater uncertainty about consumer preferences. When  is extremely low, consumers rarely click on the displayed ads, resulting in low revenue. When  is extremely high, the strong likelihood of monetizing a click triggers intense competition, prompting both DSPs to bid aggressively and reducing their profit margins. At intermediate values of , competition is less fierce, allowing both DSPs to earn higher revenues.
+
+That both DSPs benefit from increased  is a direct consequence of the competition softening described above. One might wonder, however, why this effect is not offset by the fact that higher  also means  observes  more frequently, seemingly intensifying competition in those states. The resolution lies in the structure of 's guaranteed payoff. Since  does not observe 's type realization, she selects a strategy against the ex-ante mixture of opponent types. Regardless of the equilibrium,  can guarantee herself a payoff of at least  by adopting the strategy of always bidding : she wins whenever  is absent and earns the full surplus  in expectation, and otherwise loses the auction and earns zero. This guaranteed payoff depends only on the probability mass in the favorable tail of 's type distribution and is completely insulated from the unfavorable tail, because auction profits are bounded below by zero. In formal terms, 's profit from bidding  takes the form : it is positive when  draws a low value and drops out, and zero otherwise. Increasing  is a mean-preserving spread on 's valuation: the unconditional expectation  is invariant in . The spread fattens both tails, but only the favorable tail (more frequent dropout) affects 's guaranteed payoff, while the unfavorable tail ( observing ) imposes no additional cost. In equilibrium, the indifference condition across 's bidding support pins her expected revenue exactly to the floor-price payoff: . The fiercer competition in -states is thus fully absorbed by the equilibrium bid adjustment, while the gains from more frequent dropout are captured entirely at the lower bound of the support.
+
+The structure of 's guaranteed payoff is also the key to understanding the Lemma and the behaviour of the informational revenue gap . Write , where  is the revenue gain that  extracts per unit of information access. Each marginal unit of  converts an uninformed event-in which symmetric competition dissipates all bidder surplus-into an informed event in which  can selectively participate. But the revenue gain per informed event, , is itself a function of  through the equilibrium bidding adjustment: at high ,  has already shifted most of her bidding mass toward the floor price, so the marginal informed event faces a pre-adjusted opponent and generates less incremental surplus. In formal terms, the third derivative of  with respect to  is non-positive (as shown in the Appendix), ensuring that once diminishing returns set in, the decline in the marginal revenue gain can accelerate but never reverse.
+
+While both revenues are increasing in , the gap  need not be monotone. Two forces compete as  rises. The first is the direct revenue advantage created by selective participation: each additional informed event lets  avoid low-value auctions and thus pushes the gap upward. This force dominates at low , where  has not yet adapted her bidding to the presence of an informed opponent. The second is gap compression:  grows at the constant rate  per unit of , because each dropout event yields  the full surplus  at the floor price. By Lemma R1-properties,  is eventually concave, so its growth rate is eventually decreasing. When the floor price is sufficiently low (), the constant-rate accrual of dropout surplus to  eventually outpaces the decelerating growth of , and the gap narrows.
+
+The floor price governs the relative strength of the two forces through the surplus term , captured by  each time  drops out. When  is low, this surplus is large: the linear force is strong and the gap peaks in the interior. When  approaches , the dropout surplus vanishes, the linear force weakens, and 's direct revenue advantage dominates throughout. The threshold  marks the exact boundary.
+
+Engagement Rates
+
+In our framework, consumer engagement with the displayed ad is the measure of campaign success and a proxy for advertiser welfare. Under the baseline click-campaign interpretation (without loss of generality), this reduces to click rates. Engagement rates for the product served by  or  read respectively
+align*
+    P (product  1  is clicked) =& p [  P(d_1  wins   t_1 = v_H) + (1-)  P(d_1  wins   t_1 = ) ] 
+
+    P (product  2  is clicked) =& p [ (1 - p) + p P(d_2  wins    t_1 = v_H) + (1 - ) P(d_2  wins    t_1 = )  ].
+align*
+
+Winning probabilities are computed in the Appendix. From a graphical inspection, we can observe that the engagement rate for  is maximised either at  or at , depending on the value of . In particular, for , engagement rates are maximised at , which is to say that the advertiser served by the uninformed platform prefers maximal information asymmetry when it is relatively unlikely that the object has a positive value. The key force stems from the fact that at low ,  wins relatively more often against an opponent who observes that its object is worthless. In the two edge cases,
+align*
+    P(product  2  is clicked) = cases
+        p   P(d_2  wins    t_1 = ),  & = 0; 
+
+        p [(1 - p) + p P(d_2  wins    t_1 = v_H)  ], & = 1.
+    cases
+align*
+
+Graphically, we observe that
+align*
+    (1 - p) + p P(d_2  wins    t_1 = v_H,  = 1)_P(d_2  wins    = 1) cases
+        > P(d_2  wins    t_1 = ,  = 0), & p < b 
+
+        < P(d_2  wins    t_1 = , = 0), & p > b.
+    cases
+align*
+
+Given that for any , , we can conclude that the non-monotonicity is entirely driven by the term , which represents the winning probability for  conditional on  having observed . To summarise the intuition: if the object is not very likely to have value, the winning gain resulting by outbidding the informed  with a worthless object is such that the advertiser served by the uninformed platform prefers that information asymmetries are maximised, i.e. that  observes the value of the object with probability 1. 
+It can further be observed that  is minimised at an interior , for any value of . As a dual,  is maximised at an interior , for any value of .  
+A stark result is that the engagement rate for product  is strictly larger than the engagement rate for product , for any . In other words, an arbitrarily small informational advantage is sufficient to prevent two advertisers promoting minimally heterogeneous products from single-homing in two different DSPs. The natural segmentation observed in the demand-side market cannot be reproduced in our simple setting. In extension multiple-ADV, we show that segmentation can be recovered by having DSPs serve heterogeneous masses of ex-ante identical advertisers. As long as information asymmetries are not absolute, if , congestion effects eventually dominate information dominance.
+
+We now study how information affects the probability that the displayed ad generates the high value . This object provides a natural measure of allocative performance: it captures the probability that the impression is assigned to an advertiser for whom the consumer is valuable. Let  denote the event that the equilibrium displayed ad generates value . Since  is uninformed with probability , in which case , and informed with probability , we can write
+equationHPHP
+P(E)
+=
+(1 - )P(E t_1 = )
++
+P(E d_1  informed).
+equation
+
+We compute the two conditional probabilities separately. First, suppose  and let
+
+_:=(d_1 winst_1=)
+
+The value of  is determined by equilibrium play and in particular it depends on . However, conditional on , neither bidder's strategy is contingent on the realized pair . Thus, the auction does not select the winner on the basis of realized match quality. Formally,
+align*
+P(E t_1 = )
+&=
+P(v_1=v_H,v_2=v_H) 
+
+&+
+P(v_1=v_H,v_2=v_L)P(d_1 winst_1=) 
+
+&+
+P(v_1=v_L,v_2=v_H)P(d_2 winst_1=) 
+
+&=
+p^2+p(1-p)_+p(1-p)(1-_) 
+
+&=p.
+align*
+
+The intuition is that, when , the auction is equivalent to choosing between two boxes. Each box contains a high-value ad with probability . Equilibrium bidding leads the mechanism to choose box  with probability  and box  with probability , but since the selection rule is not based on the contents of the boxes, the selected box contains a high-value ad with probability exactly . Therefore, equilibrium mixing determines which DSP wins the auction, but it does not affect the probability that the winner obtains high value.
+
+Now consider the states in which  is informed. In this case, the allocation becomes correlated with realized values. There are three relevant value profiles to consider. If , then the displayed ad generates value  regardless of which DSP wins. If , then  observes  and does not participate, so  wins and the displayed ad again generates value . The total probability of these two events is
+
+p^2+(1-p)p=p.
+
+
+If , which occurs with probability , a high-value ad is displayed if and only if  wins the auction. Let
+
+P_H():=P(d_1 wins t_1=v_H)
+
+
+Then,
+align*
+(Ed_1 informed)
+&=
+p+p(1-p)P_H().
+align*
+
+Substituting the two conditional probabilities into HP we get
+align*
+(E)
+&=
+(1-)P(E t_1=)
++
+P(Ed_1 informed) 
+
+&=
+(1-)p+[p+p(1-p)P_H()] 
+
+&=
+p+p(1-p)P_H().
+align*
+This expression separates a targeting-free benchmark from the incremental gain generated by information. The first term, , is the probability that the displayed ad generates value  absent targeting from 's information. The second term,
+
+p(1-p)P_H()
+
+is the gain from targeting. Information matters only through this term, and it creates value in the asymmetric state , where the high-value bidder is  and the low-value bidder is . The comparative statics with respect to  can therefore be understood through an extensive and an intensive margin. Differentiating the targeting gain yields
+
+dd[p(1-p)P_H()]
+=
+p(1-p)
+[
+P_H()_extensive margin
++
+P_H'()_intensive margin
+].
+
+
+The extensive margin is positive: as  increases, states in which  observes that it is a high-value bidder occurs more often. The intensive margin captures how 's equilibrium winning probability changes with . Using our closed-form expressions, we can show that : conditional on observing ,  shades more aggressively as competition softens, and therefore wins less often. Hence the total probability that a high-value ad is displayed in equilibrium increases with  whenever the extensive-margin gain from more frequent information dominates the intensive-margin loss from the lower conditional winning probability of the high type. We can show that, in our framework
+
+P_H() + P_H'() > 0  (, p, v_H, r)
+
+
+Thus, increased access to asymmetric information improves targeting overall.
+
+Data-Sharing Remediessec:data-sharinglicensing
+
+We now turn to analyse a specific data-sharing remedy that has featured prominently in recent regulatory discussions: requiring the vertically integrated platform to grant its competitor direct access to consumer preference data. The underlying rationale is straightforward: the integrated entity cannot be made to "forget" information it has already acquired through its ad server, since information asymmetries are pervasive and the identity of consumers cannot be linked ex ante to how relevant each of them might be for advertisers served by competing DSPs. A regulator can, however, mandate that the integrated platform share consumer identification data with rival DSPs whenever it observes consumer preferences, thereby levelling the playing field on the demand side. We treat this open-infrastructure regime as a natural benchmark.(This benchmark is closely related in spirit to the bidder-optimal information design problem studied by bergemannBidderOptimalInformationStructures2024, but our general disclosure problem does not admit the same reduction. Under hard evidence,  can only send truthful certifications of realised values, while the uninformed type cannot generate state-contingent messages; continuation payoffs therefore depend not only on a posterior mean, but on the composition of the induced first-price subgame. The problem thus does not collapse to a convex one-dimensional posterior design problem.) Furthermore, we allow for data sharing to be monetised by the integrated entity through a licensing fee. Note that requiring  to share all of its private information (both  and ) would lead to symmetric perfect information and trivial Bertrand competition at the reserve price; a more natural intervention targets the competitor's relevant signal only, namely . Formally, we study the regime in which  provides  with access to the realisation of  at price  whenever  observes , while  retains its private knowledge of . This captures the essential feature of data portability mandates and interoperability requirements that have been proposed by the competitionandmarketsauthorityOnlinePlatformsDigital2020: an architectural commitment to open the integrated platform's consumer data infrastructure to competitors.
+Under the mandated sharing regime, whenever  is informed,  learns  and can avoid bidding for worthless impressions. However,  still faces uncertainty about whether  will compete when , as  does not observe . Total revenues for the two firms can be decomposed as follows:
+itemize
+    Suppose that  is uninformed about ; then both bidders know that they compete for a slot of expected value , and earn zero expected profits.
+    Suppose that  observes ; three possible cases arise:
+    enumerate
+        . Neither firm bids, expected revenues are zero.
+        , .  bids  while  stays out of the auction. This event has probability .
+        ,  unknown. A new auction with imperfect information takes place. We derive equilibrium bidding functions for this subgame below.
+    enumerate
+itemize
+
+We construct an equilibrium in mixed strategies. The two indifference conditions are
+align*
+    (v_H-b)F_2^(b) = _1 
+
+    (v_H-b)[pF_1^(b) + 1-p ] = _2
+align*
+where ,  are bidding functions of  and  respectively under the data licensing regime, where  is played if and only if . We derive equilibrium distributions following the same logic as in the main analysis. 
+The supports of  and  coincide for the usual reasons outlined in the previous section; moreover,  places positive mass on the lower bound . To derive the upper bound of the support and equilibrium distributions, we use . We get that , implying that
+equation*
+    F_1^*(b) = 1-pp ( b-rv_H-b ).
+equation*
+We back out  by setting :
+equation*
+    b^= +(1-p)r.
+equation*
+This in turn allows us to solve for  and :
+equation*
+    _1 = v_H- b^= (v_H-r)(1-p).
+equation*
+Note that . Finally,
+equation*
+    F_2^*(b) = (1-p)(v_H-rv_H-b).
+equation*
+One can note that the point mass conjecture for  holds: , i.e.  puts on  exactly the same mass corresponding to the probability that  draws . 
+Note that expected revenues for both bidders under this scenario is . Summing all terms up, we get expected revenues
+equation*
+    R_2^= p (v_H-r)(1-p).
+equation*
+
+A natural first question is whether  would ever share consumer data voluntarily, absent regulatory intervention. Under the mandated sharing regime without compensation, 's profits are . It can be shown that uncompensated sharing always makes  strictly worse off:
+lemno-sharing
+     for all parameter values.
+lem
+
+The result follows from simple algebraic manipulation and confirms that data sharing must be imposed by a regulator; the platform's private incentives always favour the closed ecosystem when sharing is uncompensated. Having established this, we ask whether  can at least monetise the forced data access: if the regulator mandates that  open its infrastructure to , could  offset its competitive losses by charging a licensing fee? To compute an upper bound on 's monetisation potential, we assume  can make a take-it-or-leave-it offer to , thereby extracting 's full willingness to pay. By subtracting  from , we obtain 's willingness to pay for data access, . Total revenues under data licensing for  are therefore
+equation*
+     R_1^= p (1-p)(v_H-r) + p^2 (1-p)(v_H-r) + (1-p)^2r = p (1-p^2)(v_H-r) + (1-p)^2r.
+equation*
+This tells us that .
+
+The two revenue functions of interest have the following feature:  is linear increasing in , while  is increasing and changes concavity at most once (Lemma R1-properties). These two properties allow us to provide tight bounds on the parameters under which the mandated remedy imposes a net cost on , even when the platform can fully monetise data access. Our main result is that for a range of parameters capturing plausible market conditions, the competitive advantage from proprietary data exceeds the maximal licensing revenue. To build intuition, we first illustrate two boundary conditions on the floor price and a special case of the main result for high engagement probabilities. 
+Define the net surplus from the closed ecosystem as . A first straightforward result is that if the floor price is set to zero,  cannot extract any compensation for the mandated sharing. When the floor price is zero, 's willingness to pay for information about worthless slots is also zero, as it can win these auctions for a near-zero price anyway. Sharing data would force  to face a more informed competitor in exchange for zero compensation; the mandated remedy is therefore unambiguously costly for .
+
+cor
+    If , then  for all parameter values.
+cor
+
+The special case demonstrates the relevance of engagement probabilities for the cost of the data-sharing remedy. As  increases, revenues under the closed ecosystem decline as competition intensifies. On the other hand, 's willingness to pay for data access (avoiding bidding on worthless slots) also decreases in , as mistaken bids become rare. The second effect dominates the first; in light of this, there exists  such that for all , the mandated remedy strictly reduces 's profits even with full monetisation.
+
+propalways-license
+    Given the properties of  and ,  such that for all   for all admissible values of .
+prop
+proof
+    Define  and write . As established in the proof of Lemma lem:license-boundary,  admits the representation
+equation*
+    () = (1-p) v_H1-x h_p,x(), h_p,x"() = -2(p-x)[p(1+x)-x] < 0,
+equation*
+where the prefactor is non-negative on , so  shares the sign of the strictly concave quadratic . Since , to ensure  it suffices to satisfy the two endpoint conditions
+equation*
+     _= 00, []_= 1 0,
+equation*
+which are equivalent to  and : a strictly concave function non-negative at both endpoints of  stays non-negative throughout. Evaluating the endpoints,
+equation*
+    h_p,x(0) = p(1-p) - x(2-2p-p^2), h_p,x(1) = x(1-x)(p^2+p-1).
+equation*
+The second is non-negative for every admissible  precisely when , i.e. . The first holds uniformly in  under the same condition: it is affine and decreasing in , so its worst case is , at which  (and it is positive a fortiori once ). Both endpoints carry the factor , whose positive root is . We conclude that if , then  for all admissible .
+proof
+
+The second boundary condition on  helps us build intuition towards a complete characterisation of the parameter region under which the remedy imposes a net cost on . Despite the change of concavity of , it can be shown that whenever the slope at  of  is negative, monetisation revenue always exceeds the competitive loss. For fixed parameters , this condition hinges on the floor price being sufficiently high. High floor prices make 's uninformed bidding more costly; this dramatically increases willingness to pay for data access, enough to offset 's competitive losses from facing an informed rival.
+
+lem
+   Fix : if , then  always prefers to partially license its data.
+lem
+proof
+    For a fixed  the threshold  below which  is pinned down by the following:
+    align*
+     _= 0 = (-1 + p) (v_H (-1 + p) p + 2 r - p (2 + p) r) 
+
+    r:=r:  _= 0 0 r (p-1)p^2 + 2 p -2 .
+align*
+Note that the last inequality holds with equality at , otherwise the inequality is always strict.(At the knife-edge , the sign of  for  depends on . If , then  for all , so licensing always dominates. If , there exists a unique  such that  for  and  for . The proof is given in Appendix Lemma lem:license-boundary.) By Lemma R1-properties, whenever ,  is weakly concave in . Thus if , then  for all parameter values. Consider : it can be shown that in this parameter region, for any  the function  has at most one root in the interval , i.e. there exist no . Suppose by contradiction that such  exist. Recall that , while . It is easy to establish that :
+equation*
+    []_r= = -(1 - 2 p + p^3) []_r= cases
+        < 0 & p < p 
+
+        0 & p p.
+    cases
+equation*
+Consider starting from  and continuously increase its value; by continuity of  in both  and , shifting from one to three roots requires a point of tangency, i.e. the existence of  that satisfies the system of equations
+equation*
+    cases
+        []_= = 0
+
+        _= =0.
+    cases
+equation*
+It can be shown that no such  exists, implying that  can never become positive for an interior interval . This entails that satisfying the condition  is sufficient for  to always be able to monetise the mandated sharing profitably.
+proof
+
+The second boundary condition helps us establish our main result. For , if  and , the competitive advantage from proprietary data exceeds the maximal monetisation revenue: the mandated remedy is costly for . Recall that a high  magnifies the value of differential data access and thus increases the cost of the remedy. If  is lower, 's ability to resist the remedy depends on two further conditions. First,  must not be too high: low floor prices ensure that even if  is hardly informed (), 's willingness to pay for data does not exceed the competitive advantage resulting from selective data access. Second,  should not be too high: the monetisation revenue increases linearly in , while revenues in the closed ecosystem are concave in , entailing that at sufficiently high levels of information access,  can profitably monetise the mandated sharing.
+
+proplicense-gen
+    For  and , there exists a unique  such that  for  and  for .
+prop
+proof
+    By , we have that  , while by  and  we know that . The existence of  follows by the Intermediate value theorem. Uniqueness follows from Appendix Lemma lem:license-boundary, which shows that throughout this parameter region  has at most one root in .
+proof
+
+The comparative statics with respect to the threshold  have an intuitive sign. First, a higher floor price makes being uninformed more costly for , thus increasing its willingness to pay for data. This makes licensing more attractive for  at all levels of . Secondly, as proposition always-license clearly shows, a higher click probability magnifies the value of 's private information. This makes  more reluctant to license its advantage away.
+coralpha-threshold
+    The threshold  is decreasing in  and increasing in .
+cor
+
+The comparative statics with respect to  admit a natural interpretation in terms of a complementary class of regulatory interventions. While the data-sharing remedy studied above operates on the intensive margin (conditioning on  being informed, it forces the platform to share what it knows about its competitor's match quality), policies that reduce  operate on the extensive margin, lowering the probability that the integrated platform can identify consumers in the first place. Privacy regulations such as the GDPR, browser-level tracking prevention, and the ongoing deprecation of third-party cookies all have the effect of reducing  in our framework. Corollary alpha-threshold shows that lower values of  raise the threshold , expanding the parameter region in which the closed ecosystem dominates the monetised remedy; insofar as  falls below , the platform cannot profitably offset its competitive losses through licensing. From a social perspective, however, a reduction in  directly diminishes the information asymmetry between the two DSPs, which the analysis in the preceding section shows to be the fundamental source of competitive distortion. The two types of intervention are therefore complementary: data-sharing mandates level the playing field conditional on the integrated platform being informed, while privacy-enhancing policies reduce how often such informational advantages arise.
+
+Our framework also speaks to the welfare effects of reducing . The comparative statics in Section baseline-model show that higher  softens competition and benefits both bidders, while simultaneously improving ad relevance for consumers. A regulator contemplating privacy-based remedies therefore faces a trade-off: reducing information asymmetries curbs the integrated platform's competitive advantage but may also reduce the efficiency gains from better-targeted advertising.
+
+To assess whether the parameter regions identified in Proposition license-gen are empirically plausible, we conduct a calibration exercise using industry estimates for click-through rates, floor prices, and winning bids. The exercise, detailed in Subsection sect:calibration, confirms that for realistic market configurations in programmatic advertising, the mandated data-sharing remedy imposes a net cost on the integrated platform. Even under the most favourable monetisation terms (take-it-or-leave-it offers extracting 's full willingness to pay), the competitive advantage from proprietary data exceeds the licensing revenue  can extract. This provides a structural explanation for the persistence of closed data ecosystems in digital advertising: platforms such as Google resist data-sharing mandates not out of strategic inertia, but because their competitive position is genuinely eroded by symmetric information access. For empirically plausible parameters, opening the infrastructure creates a fundamentally more informed and aggressive competitor, and the competitive costs outweigh any monetisation benefits.
+Calibration exercisesect:calibration
+
+To assess whether the parameter regions identified in Proposition license-gen are empirically plausible, we conduct an illustrative calibration exercise grounded in industry data and empirical studies of digital advertising auctions. Table tab:calibration-params summarizes the calibrated parameters, their interpretation, and supporting sources.
+
+table[h!]
+tabular@lllp5.2cm@
+Parameter & Interpretation & Range & Source 
+
+ & Click-through rate &  & irvineGoogleAdsBenchmarks 
+
+ & Value per click (normalized) &  & CPC benchmarks: 0.50-3.00 
+
+ & Information asymmetry &  & competitionandmarketsauthorityOnlinePlatformsDigital2020 
+
+ & Floor-to-bid ratio &  & choiOptimizingReservePrices2023; fengReservePriceOptimization2021 
+
+ & Implied floor price & endogenous &  
+
+tabular
+Calibration parameters, ranges, and sources.
+tab:calibration-params
+table
+
+We discuss each of our calibration choices below:
+Click-through rates - The parameter  represents the probability that a consumer engages with a displayed ad. Industry benchmarks for Google Ads report average display click-through rates of approximately 0.46% across industries irvineGoogleAdsBenchmarks. We set , targeting mid-to-high-value programmatic inventory.(DSPs such as Google Ads or Xandr manage omnichannel portfolios spanning search, display, video, and native formats. Our range reflects higher-value programmatic formats (video, native, retargeting) where data-driven targeting provides the largest competitive advantage. Bottom-tier remnant inventory, such as leaderboard or mid-page units with CTRs in the 0.03%-0.15% range, is excluded as it is typically sold through non-strategic channels.) This range is well below . 
+Advertiser valuations - The parameter  represents the advertiser's willingness-to-pay for an engaged consumer. We calibrate  directly from cost-per-click (CPC) data, which reflects revealed advertiser valuations in equilibrium. Industry benchmarks report average display CPCs of approximately 0.50-1.00 irvineGoogleAdsBenchmarks. We normalize  and express all prices in units of the high valuation; the dollar range serves only to interpret floor prices in monetary terms. 
+Information asymmetry - The parameter  captures the probability that the integrated DSP observes the realization of consumer preferences. In practice, this maps to the joint probability that three conditions are met: (i) the publisher uses the integrated platform's ad server (e.g., Google Ad Manager), granting the integrated DSP direct access to impression-level data; (ii) the integrated DSP can match the consumer's identity through first-party cookies, device identifiers, or login-based matching; and (iii) the matched identity carries sufficient behavioral history to predict engagement with high confidence. The CMA's market study of online platforms provides direct evidence on each component competitionandmarketsauthorityOnlinePlatformsDigital2020. On condition (i), Google Ad Manager accounts for over 90% of publisher ad serving in the UK, ensuring that the integrated DSP has server-side data access for the vast majority of impressions. On condition (ii), the CMA documents that cross-provider cookie synchronization fails for approximately 30% of impressions, implying a baseline match rate of roughly 70% when DSP and publisher ad server are operated by different providers. Crucially, the vertically integrated platform avoids this cross-provider synchronization entirely, as its DSP and publisher ad server share a common identity namespace; its effective match rate is bounded above only by the fraction of users who block or delete cookies, browse in private mode, or cannot be matched across devices. We thus set . The lower bound reflects that even without third-party cookies, deterministic signals (login state, device fingerprinting) provide a marginal identification advantage. The upper bound reflects the joint nature of the three conditions: even with near-universal ad server access and a high within-platform match rate, the residual failure from unidentifiable users (private browsing, cookie deletion, cross-device gaps) ensures that  remains bounded well below one.
+Floor prices - To capture how publishers set floor prices in practice, we parameterize the reserve price as a fraction  of the expected winning bid: . This modeling choice follows choiOptimizingReservePrices2023, who document through a field experiment at a major publisher that reserve prices are operationally calibrated relative to historical bid data, and find that optimized floors fall in the range of 20-50% of expected revenue. fengReservePriceOptimization2021 develop reserve price optimization algorithms specifically for first-price display advertising auctions and provide corroborating evidence from a major ad exchange. We set : floor prices are strictly positive, but never so high as to exclude a large fraction of bidders.(A floor at  already represents an aggressive pricing strategy. Real-world floor optimization involves trade-offs between per-impression revenue and fill rates that make extreme floor-to-bid ratios unsustainable; see also ostrovskyReservePricesInternet2023 for field-experimental evidence on reserve price effects.)
+
+The expected winning bid under full licensing can be computed as
+equation*
+    E[b_1] = v_H (1+(-1+p)) p-(-1+p) (([1-p]+[(-1+p)-1+p]),  0,1.
+equation*
+Substituting  and solving for  in closed form, we search over the grid  with steps of ,  with steps of , and  with steps of . We retain pairs  that simultaneously satisfy
+align
+    r =&   E[b_1] eq:cal-floor
+
+    r &  r. eq:cal-rhat
+align
+The parameter ranges for which  are:
+equation*
+    > 0 cases
+        p [0.005, 0.015] 
+
+        [0.10, 0.47] 
+
+        r [0.0002  v_H,  0.0072  v_H] 
+
+        [0.05, 0.75].
+    cases
+equation*
+
+The general pattern validates the intuition underpinning our main result: lower values of  require scaled-down ranges of  for . For example, at  the admissible floor prices are , while at  the feasible region expands to . Notably, for floor-to-bid ratios up to , the result that mandated sharing is costly for  holds across the entire range , indicating that the binding constraint is on the floor price, not on the degree of information asymmetry. To translate floor prices into monetary terms, consider  (average display CPC): at , the floor CPM (i.e., ) ranges from  to . For comparison, choiOptimizingReservePrices2023 report median winning-bid CPMs of order 0.50 in their display advertising data (Table 1, subject to a confidential scaling factor), and our calibrated floor-to-bid ratios  imply floors that are a moderate fraction of winning bids, consistent with the reserve price levels studied in the optimization literature fengReservePriceOptimization2021, ostrovskyReservePricesInternet2023.
+
+figure[H]
+        numerical-analysis/FL-calibration/calibration_FL_heatmap.png
+    Surplus difference  in  space for . Green indicates ; red indicates . Vertical dotted lines delimit the empirically plausible range for .
+    fig:calibration-heatmap
+figure
+
+Figure fig:calibration-heatmap displays  in  space for three representative values of . The green region corresponds to parameter combinations where  (closed ecosystem dominates forced sharing); the dashed contour marks . Two patterns are evident: first, the  region spans the entire empirically plausible range for  (vertical dotted lines) whenever floor prices are moderate, confirming that the theoretical predictions apply under realistic information asymmetries. Second, as  decreases, the feasible region contracts, consistent with the comparative statics in Corollary alpha-threshold.
+
+Figure fig:calibration-sensitivity traces  as a function of  for several values of , holding the floor-to-bid ratio at . At this moderate floor level,  remains strictly positive across the entire empirically plausible range  for all values of . The curves exhibit an inverted-U shape:  initially increases in  (as 's information advantage grows and the value of data exclusivity rises) before declining at high  (as the floor price effect dominates). Higher  shifts the entire curve upward, reinforcing the conclusion that the data-sharing remedy is costly for the integrated platform over a wider range of parameters when click-through rates are higher.
+
+figure[ht]
+        numerical-analysis/FL-calibration/calibration_FL_sensitivity.png
+    Surplus difference  as a function of  for , with . At moderate floor prices,  throughout the empirically plausible  range.
+    fig:calibration-sensitivity
+figure
+
+Overall, this exercise validates the claim that the parameter space identified in Proposition license-gen captures realistic market conditions. The feasible region for  overlaps substantially with empirically documented levels of information asymmetry in digital advertising markets. While the precise calibration of  remains subject to uncertainty, the breadth of the feasible region suggests that the qualitative conclusions are robust.
+
+Concluding remarkssect:conclusion
+
+We develop a tractable model of the digital advertising market for display ads, aiming to capture how preferential data sharing due to vertical integration within the ad-tech stack affects competition and data management. Our analysis reveals that increased information access by integrated platforms benefits all competitors by softening competition. The equilibrium structure generalizes to  discrete valuations, and alternative specifications of the reserve price yield isomorphic results with the anchor shifted appropriately. 
+We then ask whether the integrated platform would ever license its data, and identify precise conditions under which exclusivity dominates licensing even under the most favourable monetisation terms. When floor prices are sufficiently low and information asymmetries are not overwhelming, the competitive advantage from proprietary data exceeds any monetisation revenue. Engagement probability emerges as the primary driver: when consumers engage with high likelihood, each impression becomes sufficiently valuable that preserving targeting advantages always exceeds potential licensing revenue. A calibration exercise grounded in industry data shows that for realistic display advertising click rates (0.5-1.5%), exclusivity dominates licensing for the integrated platform when floor prices do not make uninformed bidding too expensive and when the platform's information advantage is substantial but not complete. The mechanisms supporting closed ecosystems reveal why integrated platforms voluntarily preserve data silos. Low floor prices enable the uninformed platform to cheaply win auctions that are worthless for its opponent, reducing its willingness to pay for data below the integrated platform's competitive losses from sharing. Meanwhile, the concave relationship between information frequency and platform revenues means that intermediate levels of information advantage are particularly valuable to preserve. These structural features create an equilibrium where profit maximisation naturally produces and maintains data silos.
+Our analysis is necessarily limited in scope. Three limitations warrant particular attention. First, we examine a single auction between two competitors in a stylized market that abstracts from the full complexity of the ad-tech stack. Second, while both DSPs earn higher profits under information asymmetry and consumers see more relevant ads, this aggregate view obscures distributional concerns: advertisers using the less-informed platform are unambiguously worse off. Third, the model does not capture dynamic effects - how advantages compound over time, affect market entry, or influence publisher revenues. Most critically, our static framework cannot address whether the low floor prices that sustain closed ecosystems themselves result from market power or competitive forces.
+From an antitrust perspective, our findings suggest that concerns about digital advertising markets stem not from immediate auction outcomes, but from the structural conditions that make closed ecosystems profitable. The fact that low floor prices support data silos raises questions about whether platforms strategically maintain these conditions. Our comparative statics with respect to information asymmetry further suggest that privacy-enhancing regulations which reduce the integrated platform's identification advantage may serve as a complementary remedy to direct data-sharing mandates. Future work incorporating dynamic competition, endogenous floor prices, and publisher-side effects would provide a more complete picture of how information asymmetries shape market structure and competitive dynamics in digital advertising.
+
+Declaration on the use of AI-assisted tools. During the preparation of this work the authors used Claude, ChatGPT, and Gemini for programming assistance, formatting, and language editing. After using these tools, the authors reviewed and edited all content as needed and take full responsibility for the content of this draft.
+
+
+
+
+Extensions
+
+AdEx Take-Rate
+
+In the baseline model, we assume that the objective of a DSP coincides with advertisers' surplus. While it is true that DSPs are optimized to meet the goals of advertisers' campaigns, in practice vertically integrated platforms such as Google also monetise the auction through fees charged to publishers. In this section, we extend the model by allowing the integrated platform to extract an exogenous share of the winning bid. This captures the idea that the ad exchange is owned by the integrated platform, who earns revenue from intermediation independently of whether its affiliated DSP wins the auction.
+
+We keep the information structure of the baseline model unchanged. There is a single ad exchange, owned by the integrated platform. All impressions are sold through this exchange. With probability , the integrated DSP  observes the realization of its value before
+bidding; with probability , it remains uninformed and values the impression at . The rival DSP  always values the impression at .
+
+We assume that, whenever the impression is sold at price , the integrated platform earns a fee equal to , where  is exogenously given. Accordingly, the expected payoff of the integrated platform becomes
+*
+
+We maintain the same bidding discipline as in the baseline model: DSPs do not submit bids above the value of the advertiser on whose behalf they bid. This rules out purely mechanical overbidding by the integrated DSP aimed at inflating the fee base. Under the equilibrium constructed below, this restriction is never binding for the participating types.
+
+Equilibrium
+
+As in the baseline model, we focus on the case . Hence, whenever  observes , its affiliated DSP does not bid. The take-rate extension modifies the equilibrium in a particularly simple way. To understand why, notice that the structure of 's payoff is unchanged. Since the equilibrium supports and the equilibrium strategy of  are pinned down by 's indifference condition, a direct consequence is that they are unchanged. What changes is the strategy of , as the following shows.
+
+
+For every , the game admits a unique mixed-strategy equilibrium with the same support structure as in the baseline model. The equilibrium distributions of  are unchanged. The equilibrium distribution of  is
+
+
+
+
+
+where  is the unique equilibrium distribution of  in the baseline.
+
+Comparative Statics
+
+In the baseline model, we thoroughly discussed the competition softening effect of . The take rate introduces an additional competition-softening force, as the following shows.
+
+
+For every ,
+
+
+
+
+Hence, as the take rate increases,  shifts mass towards lower bids.
+
+The formal intuition is the following. First, we have shown that changes in  do not affect the bidding behavior of . However, for a fixed distribution , we have that the marginal payoff of  from playing higher bids is
+
+
+
+
+
+
+Thus, increasing  makes  willing to play higher bids, absent adjustments in . In equilibrium, indifference of  must be restored. In particular, the following must hold
+
+
+
+Thus, a higher take rate lowers the required reverse hazard rate of 's bid distribution. The unique solution to I is
+
+
+
+
+showing that, when  increases,  must shift mass downward for  to stay indifferent. Hence, the take rate affects the equilibrium not through a change in the affiliated DSP's equilibrium CDFs, but through the rival's distribution.
+
+Auction revenue
+
+Let  denote gross auction revenue. Given the equilibrium distributions, it can be written as
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The effect of the take rate on gross auction revenue follows directly from the comparative statics of equilibrium distributions. Indeed, bidding strategies of  are independent of , whereas  increases pointwise in . Thus, it is immediate to get that
+
+
+
+
+As a direct consequence, the net revenue of the publisher
+
+
+
+
+also decreases when the take rate grows.
+
+Exchange fee revenue
+
+The integrated platform's exchange fee revenue is
+
+
+
+
+
+
+We have
+
+
+
+
+
+
+
+
+The extensive margin is positive: a higher take rate lets the platform extract a larger share of any given winning bid. The intensive margin is instead negative. As we showed, a higher take rate softens bidding, which reduces gross auction revenue. Hence
+
+
+
+
+
+
+
+In words, the exchange fee revenue increases in  if and only if the elasticity of gross auction revenue with respect to the take rate is smaller than one in absolute value. This condition captures
+the margin-base tradeoff created by the fee.
+
+Integrated platform payoff
+
+Let  denote the advertiser-side surplus generated by the affiliated DSP in the equilibrium with take rate . The integrated platform's total payoff is
+
+
+
+
+
+
+We will now discuss how the integrated platform's total payoff is affected by  and . The effect of information access on the integrated platform's total payoff can be decomposed as
+
+
+
+
+
+
+
+
+The first term captures the positive effect of competition softening on advertisers' surplus. The second term shows that now the platform internalizes the loss of exchange fee revenue induced by softened competition. Thus, the take-rate extension creates a genuine tradeoff: information access raises affiliated-DSP surplus but erodes the exchange fee base. At , this expression collapses to the baseline payoff of the integrated DSP. Hence, by continuity of the equilibrium distributions, for sufficiently small take rates the baseline comparative static with respect to  still holds. For larger take rates, the aggregate effect is generally ambiguous.
+
+Let us now look at the effect of . Here again we have opposite forces. As we showed, increasing take-rates soften competition, which naturally pushes up advertisers' surplus:
+
+
+
+
+The effect on exchange fee revenue is instead ambiguous, as we discussed. In particular, the effect is positive if and only if gross auction revenue elasticity is below .
+
+Implications for data sharing
+
+The take-rate extension also changes the logic of data sharing. In the baseline model, sharing
+information with the rival reduces the proprietary data advantage of the integrated DSP. With a
+take rate, however, sharing may also increase gross auction revenue and therefore expand the
+exchange fee base.
+
+Let  and  denote, respectively, the affiliated-DSP surplus and gross auction
+revenue under the closed-data regime. Let  and  denote the corresponding
+objects under a data-sharing regime. The integrated platform prefers the closed regime if and only if
+
+
+
+
+
+Equivalently,
+
+
+
+
+
+The left-hand side is the proprietary-data advantage of exclusivity. The right-hand side is the
+fee-base benefit of sharing. Whenever sharing raises auction revenue, so that
+
+
+
+a higher take rate makes exclusivity less attractive. Thus the extension delivers the following
+comparative static:
+
+
+
+
+Summary
+
+The take-rate extension preserves the analytical structure of the baseline model while introducing
+a supply-side monetisation channel. The main comparative statics are:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+and
+
+
+
+
+
+
+while the effect on  depends on the elasticity of gross auction revenue
+with respect to the take rate. The central economic message is that vertical integration creates a
+tradeoff between exploiting proprietary information on the demand side and preserving the
+fee-generating auction revenue base on the supply side.
+
+Affiliated Values
+The baseline model assumes independent valuations. In digital advertising markets, match probabilities are likely to exhibit positive correlation across advertisers: a high-intent user who is likely to click on one ad may also be likely to click on competing ads, especially when comparing similar campaigns across advertisers. We show that relaxing independence to allow for positive affiliation would reinforce our main results through a winner's curse mechanism, making our IPV specification a conservative benchmark.
+
+Consider the baseline model with the following modification. Valuations  are drawn from a joint distribution with:
+
+    Marginals:  for .
+    Correlation: .
+
+The joint distribution is characterized by:
+*
+
+When , we recover the baseline IPV model. When , valuations are perfectly correlated:  with probability one. The information structure remains unchanged:  observes  with probability ;  never observes . Importantly, since  observes  directly when informed, affiliation introduces no inference channel for , and the correlation structure affects only 's problem through the winner's curse mechanism described below.
+
+Under IPV, bidder 's expected payoff from bid  is:
+*
+
+where the equality uses independence: . Under correlation, this decomposition fails. The event  is correlated with  through the following channel:
+
+     wins  's bid was below .
+    's bid is low when  observed  (and dropped out) or when  is uninformed and bid low.
+    Under positive correlation (), low  low  in expectation.
+
+Therefore, winning is bad news about :
+*
+
+Let  denote 's bid when informed and observing , and let  denote 's strategy when uninformed. Bidder 's expected payoff from bid  is:
+*
+
+Decomposing by 's information state:
+*
+
+Focus on the first term (informed ). Under IPV:
+
+
+
+
+Under correlation, we must instead compute:
+
+
+
+
+The conditional expectations are:
+*
+
+Note that  for . When  wins, she does not know whether she beat a participating  or a dropout. The adverse selection is driven by the composition of these events at different bid levels:
+
+    If  participates (observed ), winning against this type is "good news" about .
+    If  drops out (observed ),  wins "for free," but this is "bad news" about .
+As  lowers her bid, the probability of beating a participating -type vanishes, and winning becomes increasingly conditional on  having dropped out. This selection effect drags down the expected value of  conditional on winning at low bids.
+
+In the IPV baseline, 's indifference condition across her support  is:
+
+
+
+where  denotes the probability that  wins with bid . Under correlation, this becomes:
+
+
+
+
+for some constant . The term  is increasing in : higher bids beat more aggressive opponents, reducing the adverse selection. This makes the indifference condition a functional equation rather than the simple algebraic condition in our baseline, hindering a clean equilibrium characterization. However, we can still establish how affiliate values compare to the IPV benchmark in terms of competition intensity.
+
+Assume valuations are positively affiliated (). Bidder 's equilibrium bidding distribution under correlation is first-order stochastically dominated by her bidding distribution under independence (IPV).
+
+Proof sketch. From the conditional expectations derived above, for any bid , the expected value of the object conditional on winning is strictly less than the unconditional mean . Thus, for any fixed winning probability, 's expected surplus is strictly lower than under IPV. Under IPV,  already faces strategic disadvantage from information asymmetry, i.e. competing against an informed opponent who can avoid worthless impressions. Positive affiliation compounds this disadvantage by introducing a winner's curse on the value itself: winning becomes bad news about , not just about the strength of the competition faced. Following the linkage principle milgromTheoryAuctionsCompetitive1982, this additional adverse selection channel shifts best-response functions downward, and since the effect is more severe at lower bids (where winning is increasingly conditional on  having dropped out), the entire equilibrium distribution shifts toward lower bids. 
+
+When , we have  with probability one. In this case:
+
+    If  drops out (observing ), then  with certainty.
+    's payoff from winning against a dropout is  for any .
+    To win against a participating  (who observed ),  must outbid an informed opponent who knows the item is worth .
+
+Under perfect correlation,  cannot earn positive expected profit. Winning against a dropout yields a guaranteed loss, while winning against an informed high-type requires bidding aggressively against an opponent with superior information. This extreme adverse selection drive  out of the market entirely. The case  thus represents a complete unraveling of competition due to informational asymmetry.
+
+[IPV as Conservative Benchmark]
+The IPV assumption isolates the information-asymmetry effect from adverse selection. Under positive correlation, two forces soften competition: (i) the information advantage of , as characterized in our baseline analysis; and (ii) the winner's curse faced by . Our IPV results capture only the first channel, making them a lower bound on competition softening in environments where match quality is positively correlated across advertisers.
+
+Competition with multiple Single-Homing AdvertisersWhile our baseline model takes DSP selection as exogenous, this extension demonstrates that platform choice can be endogenized through congestion effects. When platforms differ in the number of advertisers they serve, market segmentation can arise endogenously in equilibrium. The mechanism operates as follows: an advertiser managing a campaign for a specific ad impression rationally single-homes to avoid competing against itself across multiple platforms. Faced with this choice, the advertiser confronts a fundamental trade-off between informational advantage and competitive intensity. A better-informed DSP offers superior targeting but may be congested with many competing advertisers. Conversely, a less-informed DSP provides inferior targeting but potentially faces less competition.
+
+Our analysis establishes that this trade-off can sustain heterogeneous platform sizes when information quality is imperfect (). Proposition  shows that for any imperfect information structure, there exists a threshold platform size beyond which congestion effects dominate informational advantages, making the uninformed DSP strictly preferable. The force behind the result is the residual uncertainty faced by DSP 1: uninformed states create room for DSP 2 to win impressions, while congestion at DSP 1 dilutes the winning probability of any individual advertiser placed there. This implies that better ad-server coverage, captured by a higher , confers a downstream advantage in the advertiser market by allowing the informed DSP to sustain a larger advertiser base before congestion induces switching. The extension therefore identifies a concrete channel through which informational advantages upstream translate into market power downstream.
+
+We emphasize two limitations of this analysis. First, the model adopts an atomistic approach, analyzing competition for a single ad impression in isolation. In practice, larger platforms offer more inventory, which could offset congestion in win rates with greater volume of opportunities. Second, this represents one mechanism among several that could sustain market segmentation; alternative explanations include advertiser heterogeneity (e.g., performance vs. brand advertisers), budget constraints, or exclusive inventory access. The congestion mechanism is best understood as a complementary force that can contribute to platform differentiation when information advantages are imperfect.
+
+Consider two classes of advertisers: advertiser  chooses the informed DSP, while advertiser  chooses the uninformed DSP. The valuation vector is  of dimension , where  with  represents valuations for products served by DSP , and  similarly represents valuations for products served by DSP . For each product  served by DSP , the type is , where  indicates that  observes a high valuation for product ,  indicates a low valuation, and  indicates that  is uninformed about the valuation for that product. 
+We interpret each DSP as choosing a common bidding policy across the campaigns it serves, with the realized bid vector generated by applying that policy independently across products. This captures a platform-level environment in which many bidding machines operate in parallel but are disciplined by the same DSP-side bidding rule. Assume that DSP  plays , and denote:
+
+*
+
+where each bid is indexed in the subscript by the corresponding advertiser. In other words,  pins the advertiser with the highest bid within DSP . The expected payoff of  when playing  reads:
+*
+
+It is clear that the informed DSP  will only place positive bids for products with high valuations. The expected payoff of  from playing  when  is:
+
+*
+
+When instead  for all  (i.e., DSP  is uninformed about all products), the expected payoff of  when bidding  is equivalent to the expected payoff of  when bidding , i.e.
+*
+
+We focus on equilibria in which the DSP implements a common bidding policy that is independent and identical across products.(The equilibrium characterized below should not be interpreted as the symmetric equilibrium of a fully decentralized within-DSP game in which each bidding machine is itself a strategic player. In that alternative game, a bidder at  with value  who bids  would face payoff , accounting for internal competition (same for ). These indifference conditions differ from the DSP-level ones used here, which equalize payoffs for the highest bid submitted by each platform. Consequently, the CDFs derived below do not decentralize to independently strategic bidders; in particular, the support structure need not preserve the ordered partition obtained in the platform-level problem.) This restriction is justified by the ex-ante symmetry of products from each DSP's perspective and yields a tractable characterization of the strategic interaction between platforms. Formally, we impose the following structure on bidding behavior:
+
+
+     bids independently and identically across products. More precisely:
+
+    [(1)]
+
+        the distributions of bids for the products are independent conditional on .
+
+        
+
+        the distribution of bids for product  is independent from .
+
+        
+
+        bids are identical up to the realization of . In particular,  always bids  for a product whose valuation is .
+
+    
+    
+
+Under this assumption, the strategic interaction reduces to competition between the highest bids from each DSP, allowing us to focus on platform-level competition under a common policy implementation.
+
+    
+
+    Define , a random variable representing the number of high-valuation products in . The corresponding filtered vector is denoted as . Whenever , DSP  bids for product  according to , with aggregate play
+
+    *
+
+    *
+
+    We denote  the C.D.F. associated to the distribution . When  for all  on the other hand,  bids for product  according to  such that:
+
+    
+
+    *
+
+    We denote  the C.D.F. associated to the distribution .
+
+    
+
+     bids identically and independently across products. Formally,  bids for product  according to  such that:
+    *
+
+    We denote  the C.D.F. associated to . For each product,  puts a positive mass on the the lowest bid in the support.
+
+Note first that, under the assumption that  bids independently from , we can simplify conditional probabilities:
+*
+The idea is straightforward: only  can condition on the realization of , but its play will be independent of . Whether  or not depends on whether  has observed valuations or not, and on their realization:
+*
+
+
+This entails that expected profit for DSP  reads
+*
+Similarly for DSP , its play will not be conditioned on the realization of vector , therefore conditional probabilities simplify to
+*
+So the interim payoff for DSP  conditional on  is
+*
+For the case in which  for all , we have
+*
+Under the common-policy implementation, the distribution  describes the bid distribution applied to each product , and the relevant strategic interaction reduces to competition between the maximum bids from each DSP. The indifference conditions for DSP 1 and DSP 2 retain the same functional form as in the baseline model, with the power transformation  arising from the order statistics of  independent draws.
+
+[Equilibrium Structure with Multiple Advertisers]The equilibrium support structure from Proposition  extends to this multi-advertiser setting. In particular:
+
+    [-]  for some .
+
+    
+
+    [-]  and  for some .
+
+The proof follows the same logical chain as in the baseline: (i) Lemma  ensures that type  bids above type ; (ii) Lemma  guarantees that the support of winning bids is an interval with no interior mass points; (iii) the support inclusion and union arguments (Lemmas -) establish that both bidders mix over the same interval, partitioned by DSP 1's types. The power transformations in the CDFs do not alter these structural properties, as they preserve monotonicity and continuity.
+
+From DSP 2's indifference condition across all bids played with positive probability, we have:
+*
+where we have used the fact that . By restricting attention to , one can solve for :
+*
+By restricting attention to , we can derive :
+*
+Similarly, from DSP 1's indifference conditions:
+*
+where  are pinned down by boundary conditions.
+
+Boundary conditions further pin down the cutoffs:
+*
+
+Having characterized the equilibrium bidding strategies, we now ask whether congestion inside DSP 1 can make DSP 2 attractive to a marginal advertiser. Let  be DSP 2's highest bid, and let  and  denote DSP 1's highest bid in the informed and uninformed states, respectively. For a fixed advertiser , staying at DSP 2 yields a click only if  is the internal winner at DSP 2, its product has value , and DSP 2's platform-level bid beats DSP 1. Switching to DSP 1 instead requires  to survive DSP 1's internal auction and then beat DSP 2.
+
+The appendix shows that for every  and fixed :
+*
+The lower bound isolates the uninformed state of DSP 1, in which DSP 2 retains a residual chance of winning that does not vanish with . The upper bound captures the opposite force after switching: a single advertiser inside DSP 1 can obtain at most an  share of the platform's internal traffic. Hence congestion eventually dominates the informational advantage of DSP 1.
+
+For any , there exists a finite integer threshold  such that for all :
+*
+
+Proposition  establishes that platform size heterogeneity can arise endogenously whenever information quality is imperfect. In the present extension, the relevant object is the smallest integer congestion level beyond which switching to DSP 1 is no longer attractive. We therefore interpret  as the minimal eventual-switch threshold and ask how it responds to changes in information quality.
+
+For fixed , the minimal congestion threshold  is weakly increasing in  on . Equivalently, for , such that , we have
+*
+
+Proposition  reveals a reduced-form channel through which market power in the ad server market translates into market power in the advertising market. Increasing  can only raise the number of advertisers that the better-informed DSP can retain before congestion creates an incentive to switch to the uninformed competitor. In the context of integrated platforms that operate both an ad server and a DSP, this means that a larger ad-server footprint confers an indirect competitive advantage downstream: better information weakly enlarges the advertiser base that the integrated entity can sustain before congestion opens room for uninformed rivals. The proof, provided in Appendix , works directly with this minimal integer threshold and shows that for every fixed congestion level , the click-probability gap in favor of joining DSP 1 is weakly increasing in .
+
+N-valuations
+We extend the baseline model to  possible valuations. Each bidder  has a private value  where . Values are i.i.d. across bidders with
+
+
+
+Let  denote the expected value. The information structure follows the baseline: Bidder 2 is always uninformed (knows only the distribution), while Bidder 1 is informed with probability , in which case he observes both valuations; otherwise he is uninformed. The floor price is .
+
+Assumption (Binding floor price). There exists  such that . That is, at least the lowest valuation lies below the floor price.
+
+Type space - Bidder 1's type is  where:
+
+    Informed types:  for  when  observes .
+    Uninformed type:  when  does not observe .
+
+Type  arises with probability ; type  arises with probability .
+
+Participating types - A type participates in the auction if and only if its valuation weakly exceeds the floor price. Define:
+
+    , the set of informed types that participate.
+    Type  participates, as  by assumption.
+
+Let  denote the set of participating types for . Let  be the number of participating types.
+
+Valuation ordering - Since types are indexed directly by their expected values, we have  for all . Order the participating types by valuation: let  be the elements of  such that
+
+
+
+
+Let  be the rank of the uninformed type, i.e., .
+
+Probability weights - For each participating type , define its prior probability:
+
+
+
+
+
+
+
+The probability that  does not participate is .
+
+The analysis of mixed-strategy equilibria follows the same logical structure as the baseline model. The results of maskinEquilibriumSealedHigh2000 apply directly: higher-valuation types bid higher (Lemma ), and the support of winning bids is an interval with no interior mass points (Lemma ). The intermediate lemmas from Section  extend naturally to  participating types, yielding the following characterization.
+
+Let  be an equilibrium. Then for all : .
+
+Let  be the support of the distribution of winning bids in a given equilibrium. Then  with . Moreover, there are no mass points in .
+
+[Equilibrium Structure with  Valuations] Let  be an equilibrium of the FPA. Then:
+
+    [-]  for some .
+
+    
+
+    [-]  for each , where .
+
+The proof, provided in Appendix , follows the same chain of arguments as Proposition : the intermediate lemmas on support bounds, inclusion, and union extend directly to  types. In equilibrium, the two bidders mix over a common support . Bidder  mixes across the whole interval, whereas  partitions this interval into  ordered subintervals: type  mixes in , with lower-valuation types occupying lower intervals.
+
+[Recovery of Baseline Model]
+Setting  with  recovers the baseline model. We have , so , and:
+
+    Participating types:  and  (where ).
+    Since , the ordering is , .
+    The equilibrium has two intervals:  for type  and  for type .
+
+The equilibrium payoffs are:
+
+
+
+for bidder ; from the indifference condition, bidder  of type  earns
+
+
+
+The ex-ante expected payoff for  is:
+
+
+
+
+The expression for  reveals that the competition softening effect identified in the baseline model is robust to richer valuation structures. In particular,  is linear in . This monotonicity holds irrespective of the number of valuations  or the specific probability weights . The key observation is that bidder 's equilibrium payoff is pinned by her profit when bidding the floor price, a bid that wins only when  does not participate. Since the dropout probability  is linear in , so is . Varying the distribution of valuations shifts the level of this payoff (through the term ), but preserves the positive dependence on information precision. The mean-preserving spread intuition developed in Section  applies directly.
+
+Non-Binding Floor PriceWe now analyze the case where the floor price is non-binding: all positive valuations exceed , so every participating type has . The key difference from the binding-floor case is that there are no non-participating types. For simplicity, we analyze the case with two valuations.
+
+Setup. Each bidder  has a private value , where . Values are i.i.d. across bidders, with
+
+
+
+Let . The information structure follows the baseline: Bidder 2 is always uninformed, while  is informed with probability , in which case he observes both valuations; otherwise he is uninformed with expected value .
+
+Bidder 1 has three types:  (informed, value ),  (uninformed, value ), and  (informed, value ). The type probabilities are:
+
+
+
+Note that  (all 's types are, in principle, auction participants), hence . In the binding-floor case,  earns  by bidding  and winning against non-participating types. With , this logic collapses: bidding  yields zero payoff. We thus expect that the equilibrium could have a different structure.
+
+Following maskinAsymmetricAuctions2000, we draw on insights from the weak-strong bidder framework. maskinAsymmetricAuctions2000 study two-bidder first-price auctions where the "strong" buyer's valuation distribution first-order stochastically dominates that of the "weak" buyer. Their Proposition 3.6 shows that the weak buyer earns lower expected surplus than the strong buyer. In our setting, the valuation ranking  suggests that  is "weak" relative to the higher types and to . Building on Lemmas  and , any equilibrium with a non-binding floor must satisfy the following conditions:
+
+
+The supports of different types are ordered. Since , we have
+
+
+
+
+The support of winning bids is an interval and has no interior mass points.
+
+It can be shown that in equilibrium,  must make zero expected profit.
+
+In equilibrium,  and  makes zero expected profit.
+
+
+We establish the result in three steps.
+
+Step 1: The supports of  and  must intersect up to a point.
+Let  and . By Lemma , . By assumption, bidders do not play dominated strategies, so . We show .
+
+Suppose by contradiction that . Then in the interval , no type of  bids:  bids at most , while  and  bid at least . If  bids at some , she wins for sure against any type of . By standard arguments,  would prefer to bid  for arbitrarily small  rather than any  in the gap. Therefore  is not active in the interior of . Since neither  nor  is active in , the winning bid distribution has a gap at . This contradicts Lemma . Therefore .
+
+Step 2:  has an atom at .
+By the same argument used to establish Lemma , : if there exists , then  could profitably deviate to  for small , maintaining her winning probability while increasing her markup. Since , we have  or  is active arbitrarily close to  from above.
+Suppose by way of contradiction that  has no atom at , i.e. that . Consider 's payoff at bids approaching  from above:
+
+
+
+By indifference across her support,  throughout. But then  for all . Since  in 's support, this implies  for all such , contradicting . Therefore  has an atom at .
+
+Step 3:  and .
+We have established that  is the lower bound of the winning bid support and  has an atom at . Since any bid below  loses for sure, we consider two exhaustive cases for 's strategy.
+
+    Type  has an atom at . Then both  and  have atoms at the lower bound of the winning bid support. By maskinEquilibriumSealedHigh2000 (Proposition 4), at least one of the players tying at the lower bound must earn zero expected profit. Since , it must be that . Since  and the winning probability is positive under fair tie-breaking, we must have .
+
+Type  bids strictly below  (no atom at ). Since  is the lower bound of winning bids, any bid  yields zero payoff (loses for sure). So  from never winning. But this cannot be an equilibrium if :  could deviate to bidding  for small , earning
+
+
+
+since . This profitable deviation contradicts equilibrium, so . Combined with  (no dominated strategies), we conclude .
+
+In both cases,  and .
+
+It can also be shown that  must actively participate in equilibrium, despite earning zero expected profit.
+
+In any equilibrium, type  bids in  with positive probability.
+
+
+Suppose by contradiction that  does not participate. Then, under this hypothesis, type  behaves exactly like a non-participating type with probability . At bid ,  beats  for sure. The other types  and  have values  and  respectively, so they don't bid below . Thus:
+
+
+
+Repeating the lower-support argument from Lemma ,  must then be active on an interval starting at , so  for all . Consider now the possibility that  deviates to bidding :
+
+
+
+for small enough . Thus  can earn strictly positive profit by entering. This concludes the proof.
+
+Before stating the equilibrium explicitly, it is useful to flag an asymmetry in how the equilibrium conditions bind across the bid space. On , bidder 's positive-profit types  and  and bidder  both mix with strictly positive density; mutual best response therefore requires mutual indifference across this interval, and the resulting system of equalities pins down , , and  uniquely. On , by contrast, only type  bids with positive probability, while  assigns zero mass to the interval. Type 's own indifference requirement is vacuous, since she earns zero at every bid in ; her mixing distribution is thus pinned down, if at all, by 's optimality. Yet  does not play on  either, so the only requirement on her side is that she not wish to:
+
+It follows that any  with support in  and  satisfying eq:d2-no-deviation is part of an equilibrium. Note that the shape of  affects neither equilibrium payoffs nor the winning-bid distribution, the allocation, revenue, or welfare. We can thus impose a natural refinement to select a unique equilibrium.
+
+[Tight deterrence]An equilibrium satisfies tight deterrence if eq:d2-no-deviation holds with equality for every ; equivalently, 's equilibrium payoff  is attained at every bid in , and not only on her mixing support .
+
+Three considerations commend this refinement. First, tight deterrence is the natural limit of the baseline binding-floor equilibrium as : once non-participating types are replaced by a mass of -types who must actively bid, the role previously played by their "free wins" for  is smoothly taken over by 's mixing, and 's indifference condition extends continuously from  down to . Second, tight deterrence is the selection most robust to small trembles: under any other admissible , bidder  strictly prefers not to bid in , so an arbitrarily small downward shift in 's low-end mass would break 's indifference on her mixing support; tight deterrence is the unique selection under which small perturbations of 's play leave  indifferent rather than strictly worse off. Third, it extends 's indifference condition to the full interval , thereby eliminating an otherwise artificial kink at , where the equilibrium equation would switch from equality to inequality.
+
+[Non-Binding Floor Equilibrium] When , there exists a unique equilibrium satisfying tight deterrence (Definition ). Its strategies are:
+*
+
+The cutoffs are
+
+
+
+
+Equilibrium payoffs are
+*
+
+
+By Lemma ,  earns zero profit and the winning bid support starts at , where  has an atom. By Lemma ,  participates on . We now construct the equilibrium strategies explicitly.
+
+By Definition , eq:d2-no-deviation holds with equality throughout :
+
+
+
+Solving yields
+
+
+
+which places an atom of size  at .
+
+By Lemma ,  has an atom at . Let  denote this atom. Then type  obtains positive payoff by bidding just above :
+
+
+
+
+For type  to be indifferent across her support , we need:
+
+
+
+Solving for :
+
+
+
+
+For  to be indifferent on , her payoff at any  must equal . On :
+
+
+
+Solving for :
+
+
+
+Setting  yields:
+
+
+
+
+On ,  continues mixing and must remain indifferent:
+
+
+
+At : , so . Solving:
+
+
+
+
+For type 's indifference: , with  giving . On :
+
+
+
+
+Since  is an interior point of the winning-bid support, Lemma  rules out an atom of  at . Hence  must be continuous at :
+
+
+
+Substituting the expressions for  and  yields
+
+
+
+and therefore
+
+
+
+
+We can further verify that no profitable deviations exist:
+
+     deviating to : payoff  by construction of , so no profitable deviation.
+    Type  deviating below  gives payoff .
+    Type  deviating above  gives payoff
+    
+
+
+    where the inequality follows because  is strictly decreasing in .
+    Type  deviating to  gets payoff
+    
+
+
+    which is increasing in  on . Its maximum on that interval is attained at  and, by continuity of , equals . Hence such deviations are never profitable.
+    Type  deviating to  or below is strictly worse: below  the payoff is zero, while at  the payoff is at most .
+
+[Equilibrium Structure Mirrors Baseline]
+    With , the equilibrium structure is identical to the baseline case, with the anchor shifted from  to . Type  earns zero profit and plays the role of the low type in the baseline: she provides "free wins" to  at  through her zero-profit bids on . The atom at  prevents  from profitably deviating to . Without sufficient low-end mass from type ,  could bid  and win against too much of 's distribution. Type  earns positive profit by exploiting 's atom at . The atom at  is necessary: without it,  would earn zero on , but could profitably deviate to  where . The winning bids form the interval  with no gaps, while  contains no winning bids, as  never wins there.
+
+[Generalization to  Values]
+The same logic suggests a natural extension to  valuations . Let  be the largest index such that . Then the informed types below  should act as a competitive fringe: they participate to prevent  from lowering bids, but are competed down to zero surplus, while bidder  places an atom at the top of the fringe, . In that sense, the effective floor of the auction shifts from  to , generalizing the role of  in the two-value case. What is uniquely pinned down is the positive-profit upper block above ; the exact zero-profit mixing of the fringe is, as in the two-value case, selected by the inequalities that deter low-ball deviations by .
+
+[Competition Softening Above the Competitive Fringe]Consider the non-binding -value environment with , and suppose that the fringe structure described above obtains. Let
+
+
+
+Thus, informed types  form the competitive fringe, while  and the informed types  are the positive-profit types. Then:
+
+    bidder 's equilibrium payoff is
+    
+
+
+
+    on the support of the uninformed type ,
+    
+
+
+    hence  is increasing in  for every  in its support;
+
+    for each informed type , letting
+    
+
+
+    the equilibrium CDF on its support can be written as
+    
+
+
+    so that
+    
+
+
+    for every  in the support of type .
+Therefore, the competition-softening result of the baseline model extends to the positive-profit upper block: as  rises, the uninformed type  and every informed type with valuation strictly above  shift probability mass toward lower bids. By contrast, the informed types below  are a competitive fringe and earn zero expected profit, so there is no meaningful softening margin for them.
+
+Proof sketch. The argument follows the same logic as in the baseline, with the endogenous anchor  replacing the reserve price , and with the fringe mass  replacing the dropout probability . Since the types below  are competed down to zero surplus, bidder 's guaranteed payoff is pinned down by winning against the fringe at the lowest winning bid:
+
+
+
+This is the exact analogue of the baseline identity .
+
+On the interval where type  mixes, bidder  faces only two sources of competition: the fringe, which is always below that interval, and type  itself. Indifference of  therefore requires
+
+
+
+which yields
+
+
+
+Differentiating with respect to  gives
+
+
+
+for every  in the interior of the support.
+
+Fix now an informed type . On the support of this type, bidder  wins against the fringe, against type , and against all informed types with values in ; only type  is still mixing. Hence indifference of  gives
+
+
+
+Substituting  and solving for  yields
+
+
+
+Using
+
+
+
+this simplifies to
+
+
+
+from which
+
+
+
+follows immediately.
+
+Thus, once the lower types are summarized by the single scalar , the upper block is governed by exactly the same force as in the baseline model: more information makes weak competitive states more likely, and all positive-profit types respond by shifting mass toward lower bids. A full proof would complete the support characterization for the -value non-binding case and then verify that the boundary conditions pin down a unique collection of cutoffs and CDFs above . 
+
+Continuous Valuations
+The baseline model employs discrete valuations. A natural question is whether the mixed-strategy equilibrium structure is an artifact of this specification. We establish that no pure-strategy equilibrium exists when valuations are drawn from a continuous distribution . The mechanism is the same as in the discrete case: the uninformed bidder , being a single type with effective valuation , cannot commit to any pure bid without creating a fixed target for informed opponents.
+
+The information structure follows the baseline:  observes both realizations  with probability  (otherwise using the prior  with effective valuation ), while  never observes  and has effective valuation .
+
+
+In the first-price auction with continuous valuations, there is no equilibrium in which  uses a pure strategy, for any .
+
+
+Suppose, towards a contradiction, that  plays a pure strategy  with probability one.
+
+Step 1: Informed 's best response. When  observes , any bid  wins with certainty against . To maximize profit , informed  bids the smallest amount exceeding . In continuous bid space, no such bid exists. Thus informed  has no exact best response—only a limiting strategy of bidding arbitrarily close to  from above.
+
+Step 2: Uninformed 's best response. If , uninformed  has effective valuation  and faces the same incentive: bid just above  to win at minimal cost.
+
+Step 3: 's deviation incentive. Under the candidate equilibrium:
+
+    If : Informed  types with  cluster bids just above , winning against  with certainty. By deviating to  for small ,  captures wins against these clustering types, discontinuously increasing her winning probability. No pure  can be optimal against this response.
+    If :  earns zero profit. Deviating to any  yields strictly positive profit .
+Since  can profitably deviate from any pure bid , no pure-strategy equilibrium exists.
+
+ProofsProposition 
+
+Fix  and , and write . Define
+*
+We show that  while .
+
+Let  be DSP 2's highest bid, and let  denote DSP 1's highest bid in the state where it is uninformed about all products. On that state, if , then DSP 2 wins the impression. Because DSP 2's bids are i.i.d., each advertiser in  is equally likely to be the internal winner on that event; moreover the winning product has value  with probability . Therefore
+
+
+Set
+*
+The equilibrium cutoffs from Section  are
+*
+Let
+*
+Using the equilibrium CDFs, for  we have
+*
+and
+*
+while on the upper support ,
+*
+Continuity of  at  yields
+*
+Since  for ,
+*
+A direct calculation gives
+*
+Hence
+
+Combining eq:stay-lower-bound and eq:mu-win-prob, we obtain
+*
+
+We now bound the click probability after switching. Suppose advertiser  joins DSP 1, so the platform serves  advertisers. In the informed state, let  denote the number of incumbent advertisers with valuation . Conditional on  also having value , its probability of winning DSP 1's internal auction is , while the probability that DSP 1 then beats DSP 2 is at most one. The informed-state contribution is therefore bounded by
+*
+where the identity follows from a standard binomial-coefficient calculation. In the uninformed state, all  advertisers at DSP 1 are ex ante symmetric, so the corresponding contribution is at most
+*
+Therefore
+*
+which converges to zero as .
+
+Choose . By the two limits above, there exists a finite integer  such that for all ,
+*
+Equivalently, for all ,
+*
+which proves the proposition.
+
+Proposition 
+
+
+Fix  and, for each , define the click-probability gap
+*
+where the dependence on  is suppressed from the notation. Proposition  implies that for every  the set
+*
+is non-empty. By definition, the threshold used in the text is the minimal element of this set:
+*
+Hence it is enough to prove that, for every fixed , the function  is weakly increasing on . Indeed, if  and , then  for all ; if each  is weakly increasing, it follows that  for all , so  as well. Therefore , which implies
+*
+
+We now verify the required monotonicity of . By the same lower-support argument used in Proposition , the common lower support in the multi-advertiser extension is the reserve price . For fixed , write
+*
+The equilibrium cutoffs in Section  can then be written as
+*
+For later use, define
+*
+This is precisely the quantity  evaluated along the upper-support quantile indexed by . A direct differentiation gives
+
+with strict inequality whenever . Thus higher  shifts the relevant external winning probabilities against DSP 2 downward pointwise on the upper support.
+
+Using the equilibrium CDFs together with the quantile transform, the gap admits the decomposition
+*
+where
+*)
+with
+*
+These expressions are elementary rational-integral functions of . A direct but tedious differentiation, combined with eq:Xn-alpha, shows that both weighted state contributions are weakly increasing:
+*
+Consequently,  for every fixed , so  is weakly increasing on .
+
+As explained in the first paragraph, this fixed- monotonicity implies  whenever . Taking minima yields
+*
+which proves that the minimal congestion threshold is weakly increasing in .
+
+Lemma 
+
+
+We compare the equilibrium CDFs derived in Proposition . For ,  holds strictly as  while  has a mass point at . For , both CDFs are strictly increasing in the interval. To establish dominance, it suffices to show that for any quantile , the bid required by  to reach that quantile, denoted , is strictly higher than the bid required by , denoted . We invert the CDF expressions  and :
+*
+We first verify the behavior at the upper boundary . Substituting  into both expressions yields . Since the functions meet at ,  for  if and only if the slope of  is strictly steeper than that of .
+
+We compute the derivatives with respect to :
+*
+We seek to prove . Since all terms are positive, we can compare the square roots of the derivatives to simplify the algebra. We must show:
+*
+Rearranging terms involving  to the left side:
+*
+The RHS is strictly positive given . We analyze the sign of the term in the square brackets on the LHS:
+*
+Since  and parameters are positive, it holds that . Consequently, the term in brackets is strictly negative. The inequality holds for all . Thus, , implying that  drops off faster than  as  decreases from 1. Therefore,  for all , which is equivalent to  for all .
+
+Lemma 
+
+
+    Let . Since  and , we have . Dividing revenues by , write
+*
+Because  and , the denominator is strictly positive on the entire domain.
+
+We start from the highest derivative. A direct differentiation gives
+*
+with strict inequality whenever . Hence  is weakly decreasing on  and can cross zero at most once.
+
+We now rule out the possibility that  is convex throughout. Evaluating the second derivative at ,
+*
+where
+*
+For , we have
+*
+The last inequality follows because  on .
+Therefore . Since , it follows that . Thus  is either concave throughout, or convex for low values of  and then concave.
+
+We now prove that  is increasing in . Since , the function  is concave on . Therefore, for every ,
+*
+Thus it suffices to show that  and .
+
+At  we get
+*
+because .
+
+At ,
+*
+where
+*
+It remains to show that  on .
+
+
+    If , then
+*
+
+    If , then
+*
+
+Hence  for all admissible parameter values. Since  is concave and positive at both endpoints, it is positive everywhere on . Therefore  is increasing in .
+
+Corollary , last point
+
+
+    Define . From the proof of Lemma , we have
+    *
+    Therefore  is concave in . Since  is constant, the function  is concave in .
+
+    
+
+    At :
+    *
+
+    At , using the expression for  derived above:
+    *
+    A direct calculation gives
+    *
+    The quadratic  is concave with  and , so it has a unique root in :
+    *
+    Defining , we have .
+
+    
+
+    Case  (i.e. ):  and . Since  is concave on , it crosses zero exactly once, at some . The gap  is therefore strictly increasing on  and strictly decreasing on .
+
+    
+
+    Case  (i.e. ):  and . A concave function that is non-negative at both endpoints of an interval is non-negative throughout, so  on  and the gap is monotonically increasing.
+
+Proposition 
+
+Fix  and let .
+
+    If , there exists a unique  such that  for  and  for .
+    If , then:
+    *
+
+
+    Let . Since  and , we have . Using  and dividing by , we can write
+    *
+    where
+    *
+    Since , the denominator  is strictly positive on , so the sign of  is the sign of .
+
+    
+
+    The function  is quadratic in , with
+    *
+    for every . Hence  is strictly concave on .
+
+    
+
+    At ,
+    *
+    Since , we have , so the condition  defines
+    *
+    Therefore
+    *
+
+    
+
+    At ,
+    *
+    Since  implies , and since  implies , we have
+    *
+
+    
+
+    We now prove the two claims.
+
+    
+        If , then  and . Since  is strictly concave, it can cross zero at most twice; because it is positive at  and negative at , it crosses zero exactly once on . Since  has the same sign as , there exists a unique  such that  on  and  on .
+
+        If , then  and . Differentiating,
+        *
+        Since  implies  and , the sign of  is the sign of .
+
+        
+
+        If , then . By strict concavity, the slope can only fall thereafter, so  for every . Hence  for all .
+
+        
+
+        If , then  while . Since  is strictly concave and starts at zero with positive slope, it is strictly positive for small , and because it is negative at , it crosses zero exactly once on . Therefore  admits a unique threshold  with the stated sign pattern.
+    
+Corollary 
+
+    The threshold  is the root of the function .
+    By Proposition , within the specified parameter range,  for  and  for . This implies that the function  intersects zero from above, establishing the sign of the derivative with respect to :
+    *
+    By the Implicit Function Theorem, the sensitivity of  to a generic parameter  is given by:
+    *
+    Given the negative denominator, the sign of  is identical to the sign of . We analyze each parameter in turn.
+
+    
+        We first determine the sign of . Differentiating  with respect to :
+    *
+    While auction revenues in both regimes naturally decrease as the floor price rises (squeezing the profit margin), the licensing regime  contains a unique component: the licensing fee . This fee represents 's willingness to pay to avoid bidding on worthless impressions. Note that:
+    
+
+
+    An increase in  strictly increases the value of the data license to the competitor (the "insurance value" against paying the floor price for a worthless slot). This positive effect in the licensing regime has no counterpart in the closed ecosystem regime . Consequently, the relative profitability of the closed ecosystem decreases as  increases:
+    
+
+
+    Thus, as floor prices rise,  is more likely to license data.
+    We now determine the sign of . The critical mechanism is the behavior of the licensing fee. As  increases, the probability that a user dislikes the product () decreases.
+    Differentiating the licensing fee component of :
+    *
+    As  rises, the risk for an uninformed bidder of winning a worthless slot diminishes. Consequently, 's willingness to pay for data collapses.Concurrently, as established in Corollary ,  is maximized at intermediate values of . However, in the region of interest where  compares licensing vs. closed ecosystems, the informational rent in the closed auction remains substantial (or decreases slower than the licensing fee collapses). The rapid decay of the licensing fee ensures that  decreases relative to . Therefore, the net advantage of the closed ecosystem increases with :
+    
+
+
+    Thus, as the engagement probability increases,  is more likely to maintain a closed ecosystem.
+
+    
+Proposition 
+We first show that Lemmas - hold for the N-value setting.
+
+In any equilibrium we have:
+
+    .
+
+    
+
+    .
+
+
+The first claim is standard: in equilibrium, no player ever bids strictly more than the highest bid of the opponent.
+
+To prove the second claim, first notice that . If not, then  would get an expected payoff of zero from bids in  when his type is . We next show that . By contradiction, suppose . Then:
+
+
+
+If , then  could profitably deviate to : the probability of winning would still be  (winning only against non-participating types) but the markup would increase. If instead , we argue that  could not be a mass point for . Indeed, if  was a mass point for , then it could not also be a mass point for : either bidder would profitably shift such mass to . But then  would be putting mass on a bid at which he earns zero expected profit, which cannot happen in equilibrium. Given that  cannot be a mass point for , again  could profitably deviate to . This shows that  in equilibrium.
+
+In equilibrium,  for all .
+
+
+By contradiction, suppose there exists . Then it must be . Let  be such that no bid in  is contained in . We claim that  could profitably deviate to  when his type is . Indeed, the probability of winning would be unaffected, and the markup is higher at  than at .
+
+In equilibrium, we have .
+
+
+By contradiction, assume that . Then no bid in  is contained in . From Lemma , we know that . Therefore, in equilibrium  must be indifferent between  and :
+
+
+
+This implies , so  would be a mass point for , contradicting Lemma . Thus, .
+
+In equilibrium, .
+
+
+It suffices to show that . By contradiction, suppose there exists  such that  for all . Then there exists  such that  is not contained in . We claim that  could profitably deviate to . Indeed, the winning probability would be unaffected, and the markup is higher at  than at .
+
+We can now put together all the intermediate results and prove the proposition.
+
+[Proof of Proposition ]
+We showed that
+
+
+
+Moreover, we showed that . Since by Lemma  we have  for all , and by Lemma  there are no gaps, it must be that
+
+
+
+where  and . Consequently:
+
+
+
+
+ComputationsWinning probabilities
+We derive below the winning probabilities used for the computation of DSP-specific click rates:
+*
+
+*
+
+
+*
+
+
+*
+
+Multiple advertisers
+Derivation of . Let  be the number of liked advertisers. M is a random variable. Recall that advertiser  can only be  if  (which happens with probability ). If , then . The size of  is , where  is the number of other advertisers  for whom .  follows a Binomial distribution. DSP  draws bids independently from  for all  advertisers in . By symmetry, given that , the probability of  winning among  bidders is . Consider the expectation of  over the distribution of :
+*
+Using the Binomial Coefficient Identity:
+*
+Let's now adjust the above expression to apply the Binomial Theorem(For reference, the Binomial Theorem states: *):
+*
+Letting ,
+*
+Then
+*
+It follows that
+*
+
+We now derive the DSP switching probability
+
+*
+
+The first probability is
+*
+
+The second probability reads
+*
+
+
+The first comparative static of interest is ; by the Implicit Function Theorem,
+*
+The denominator has a negative sign, as  switches from positive to negative territory at . As for the numerator, it is negative iff
+*
+
+
+The second comparative static of interest is ; by the Implicit Function Theorem,
+*
+The denominator has a negative sign, while the numerator is positive iff
+*
+
+
+Endogenous Information Access
+
+In the baseline model, the degree of informational asymmetry is captured by the exogenous
+parameter . We now endogenize this parameter by allowing the integrated platform to invest in a technology that determines how often the affiliated DSP can exploit consumer-level information in the auction. We assume that the platform chooses  before the auction and pays a quadratic cost
+
+
+
+
+The parameter  captures the marginal cost of building, maintaining, and deploying the infrastructure that allows the integrated DSP to observe consumer-level data. Once the integrated platform makes its investment decision, the value of  becomes public and the induced asymmetric auction takes place. In particular, bidders play according to the unique mixed strategy equilibrium we characterized.
+
+First, we will determine the degree of information access chosen by the integrated platform to maximize advertiser' surplus net of investment costs, and we denote it :
+
+
+
+
+
+
+
+
+Then, we will consider the total demand-side efficient degree of information access, denoted , which maximizes the sum of advertiser-side surplus generated by the two DSPs:
+
+
+
+
+
+
+
+
+Third, we will look at the total-surplus maximizing degree of information access, denoted , which maximizes the sum of advertiser surplus and publisher revenue:
+
+
+
+
+
+
+
+
+The last objective is total surplus net of information-acquisition costs. Indeed,  are bidders' payoffs net of auction payments, while  is the auction payment received by the publisher. Auction payments therefore cancel, and
+
+
+
+
+equals the expected value generated by the allocated impression.
+
+Private choice of information access
+
+The integrated platform's private problem is
+
+
+
+
+
+
+For an interior solution, the first-order condition is
+
+
+
+Hence the integrated platform expands information access up to the point where the marginal
+private value of information equals the marginal cost of data acquisition.
+
+Since
+
+
+
+and , the private optimum is never . If the cost of information access is
+sufficiently low, the platform chooses maximal information access. Define
+
+
+
+A direct calculation gives
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thus, whenever the objective is single-peaked,
+
+
+
+
+
+If instead , the private optimum is interior and solves
+
+
+
+Equivalently,  is the unique solution in  of the cubic equation
+
+
+
+
+
+A sufficient condition for the private objective to be strictly concave is
+
+
+
+Under this condition, the interior solution is unique whenever .
+
+The comparative static with respect to the cost parameter is immediate. For an interior solution,
+implicit differentiation of
+
+
+
+gives
+
+
+
+
+
+where the inequality follows from the second-order condition. Thus, higher data-acquisition
+costs reduce the privately chosen degree of information access.
+
+Demand-side efficient information access
+
+The demand-side benchmark maximizes total advertiser-side surplus:
+
+
+
+
+
+
+Since
+
+
+
+we have
+
+
+
+Therefore, the first-order condition for an interior demand-side optimum is
+
+
+
+
+[Private underinvestment relative to demand-side surplus]
+Suppose that the private and demand-side objectives are single-peaked. Then
+
+
+
+If both optima are interior, the inequality is strict.
+
+
+The private marginal benefit of information is , whereas the demand-side marginal
+benefit is
+
+
+
+Thus, at every , the demand-side marginal benefit exceeds the private marginal benefit
+by the strictly positive amount . If  is interior, then
+
+
+
+Evaluating the derivative of the demand-side objective at  gives
+
+
+
+Hence the demand-side objective is still increasing at , and therefore its maximizer
+lies strictly to the right. If , the inequality holds trivially.
+
+This result has a simple economic interpretation. The integrated platform internalizes the gain
+that information access creates for the advertisers served by its own DSP. It does not internalize
+the fact that a higher  also raises the expected payoff of the rival DSP by softening
+competition. Hence the integrated platform underinvests relative to the level that maximizes
+aggregate advertiser surplus.
+
+Total-surplus maximizing information access
+
+We now compare the private choice  with the total-surplus benchmark .
+Define
+
+
+
+so that the total-surplus problem is
+
+
+
+
+
+
+For an interior solution,
+
+
+
+The difference between the welfare marginal benefit and the private marginal benefit is
+
+
+
+
+
+Define
+
+
+
+
+
+The term  is the net external marginal effect of information access that the
+integrated platform does not internalize. It combines two forces:
+
+
+
+
+
+
+Using the closed-form expression for , define
+
+
+
+
+
+
+and
+
+
+
+
+
+
+
+
+Since
+
+
+
+we obtain
+
+
+
+
+
+This expression is useful because it isolates the external effect of  on total surplus
+relative to the integrated platform's private payoff.
+
+[Private versus total-surplus information access]
+Suppose that the private and welfare objectives are single-peaked and that  is interior.
+Then
+
+
+
+
+
+and
+
+
+
+
+
+
+
+At the private optimum,
+
+
+
+Therefore, the derivative of the welfare objective at  is
+
+
+
+
+
+
+
+If , the welfare objective is still increasing at the private optimum, so
+the welfare maximizer lies to the right. If , the welfare objective is
+decreasing at the private optimum, so the welfare maximizer lies to the left.
+
+Hence the ranking between  and  is not globally determined. The
+integrated platform underinvests relative to total surplus when the gain to rival advertisers
+dominates the publisher-revenue loss. It overinvests when the publisher-revenue loss dominates.
+
+We can say more by evaluating  at the boundaries. At ,
+
+
+
+Thus, near , the integrated platform's private marginal benefit from information
+access exceeds the total-surplus marginal benefit. Equivalently,
+
+
+
+whereas
+
+
+
+and since ,
+
+
+
+Therefore, for sufficiently high values of , both the private and welfare optima are close to
+zero, and
+
+
+
+More precisely, as ,
+
+
+
+
+
+
+
+whereas
+
+
+
+
+
+
+
+Since , we obtain
+
+
+
+for sufficiently large .
+
+At ,
+
+
+
+
+
+
+
+
+
+
+
+
+Hence
+
+
+
+if and only if
+
+
+
+
+
+
+
+
+When this condition holds, the total-surplus marginal benefit of information access exceeds
+the private marginal benefit near . Consequently, for cost levels such that the private
+optimum is interior and sufficiently close to one, we have
+
+
+
+
+The comparison can therefore be summarized as follows. If  over the relevant
+range of private optima, then the integrated platform overinvests relative to total surplus:
+
+
+
+If instead  at the private optimum, then the integrated platform underinvests
+relative to total surplus:
+
+
+
+If  crosses zero once at some , then
+
+
+
+
+
+whereas
+
+
+
+
+
+
+Discussion
+
+The three benchmarks highlight distinct interests. Publishers alone would choose
+
+
+
+because auction revenue decreases with . Advertisers as a group choose a higher level
+than the integrated platform:
+
+
+
+because they internalize the competition-softening benefit enjoyed by both DSPs. Total surplus,
+instead, treats auction payments as transfers and therefore does not count lower publisher
+revenue as a social gain. This creates an ambiguous ranking between the private and welfare
+choices:
+
+
+
+The sign depends on whether the positive externality on rival advertisers dominates the negative
+externality on publishers. In this sense, endogenous information access clarifies that the private
+incentive to build a closed data ecosystem can be either excessive or insufficient relative to total
+surplus, even though it is always insufficient relative to aggregate demand-side surplus.
+"'

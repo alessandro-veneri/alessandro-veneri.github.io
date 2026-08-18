@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <title>Live paper</title>
+  <link rel="stylesheet" href="../_reader/reader.css" />
+  <script>window.PAPER_CONFIG = __PAPER_CONFIG__;</script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+  <script defer src="../_reader/reader.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="../../index.html" class="site-name">Alessandro Veneri</a>
+    <nav aria-label="Primary navigation">
+      <a href="../../index.html">Home</a>
+      <a href="../../research.html">Research</a>
+    </nav>
+  </header>
+
+  <button id="mobileTocButton" class="mobile-toc-button" type="button" aria-controls="paperSidebar" aria-expanded="false">Contents</button>
+  <aside id="paperSidebar" class="paper-sidebar" aria-label="Paper navigation">
+    <a href="#paperTop" class="back-to-top">Top</a>
+    <button id="summaryButton" type="button">Plain-language summary</button>
+    <button id="chatButton" type="button">Ask about this paper</button>
+    <div id="chatAvailability" class="availability" aria-live="polite"></div>
+    <h2>Contents</h2>
+    <ol id="toc"></ol>
+  </aside>
+
+  <main id="paperTop" class="paper-main">
+    <div id="draftBanner" class="draft-banner" hidden>Local draft preview — not published</div>
+    <div id="loading" class="loading" role="status">Loading paper…</div>
+    <article id="paper" aria-live="polite"></article>
+  </main>
+
+  <dialog id="summaryDialog">
+    <div class="dialog-header"><h2>Plain-language summary</h2><button data-close="summaryDialog" aria-label="Close">×</button></div>
+    <div id="summaryText"></div>
+  </dialog>
+
+  <dialog id="noteDialog">
+    <div class="dialog-header"><h2 id="noteTitle">Note</h2><button data-close="noteDialog" aria-label="Close">×</button></div>
+    <div id="noteText"></div>
+  </dialog>
+
+  <dialog id="chatDialog" class="chat-dialog">
+    <div class="dialog-header"><h2>Ask about this paper</h2><button data-close="chatDialog" aria-label="Close">×</button></div>
+    <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+    <form id="chatForm" class="chat-form">
+      <label for="chatInput">Question</label>
+      <textarea id="chatInput" maxlength="1000" required></textarea>
+      <button id="sendButton" type="submit">Ask</button>
+    </form>
+    <p class="privacy-note">AI answers can be wrong. Verify the highlighted passage or PDF. Questions are sent to Google Gemini and should not contain confidential information. Conversations are not stored by this site.</p>
+  </dialog>
+</body>
+</html>

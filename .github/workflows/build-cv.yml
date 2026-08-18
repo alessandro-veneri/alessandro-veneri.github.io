@@ -28,14 +28,22 @@ jobs:
           working_directory: Academic_CV
           root_file: academic.tex
 
+      - name: Test live-paper publisher and deployment gates
+        run: python3 -m unittest discover papers/tests -v
+
+      - name: Test paper-chat Worker
+        working-directory: services/paper-chat
+        run: npm test
+
       - name: Assemble site
         run: |
           mkdir -p _site/assets
           cp index.html research.html _site/
           cp assets/EUI-Logo.svg assets/photo.jpg _site/assets/
           cp Academic_CV/academic.pdf _site/assets/cv.pdf
+          python3 papers/scripts/build_papers.py --output _site/papers
           echo "--- _site contents ---"
-          ls -la _site _site/assets
+          find _site -maxdepth 3 -type f -print | sort
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

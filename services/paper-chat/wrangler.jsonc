@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alessandro-veneri-paper-chat",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-07-10",
+  "vars": {
+    "ENVIRONMENT": "production",
+    "ALLOWED_ORIGIN": "https://alessandro-veneri.github.io",
+    "PAPER_SITE_BASE": "https://alessandro-veneri.github.io",
+    "ALLOW_DRAFTS": "false"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "QUOTA",
+        "class_name": "QuotaLimiter"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["QuotaLimiter"]
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

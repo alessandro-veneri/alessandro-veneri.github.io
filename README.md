@@ -18,6 +18,21 @@ A minimal static academic website for GitHub Pages.
     └── cv.pdf                       ← Auto-built from Academic_CV/academic.tex
 ```
 
+## Live-paper infrastructure
+
+Reusable ModernPapers-derived infrastructure lives in `papers/`, with the
+anonymous Gemini proxy in `services/paper-chat/`. The advertising-auctions
+paper is registered as a draft and is deliberately excluded from the GitHub
+Pages artifact. Its research-page link is present only as an HTML comment.
+
+The author-side publisher compiles and snapshots a paper, produces independent
+LaTeX and PDF baselines, converts file-aware source units with the locally
+authenticated Codex CLI, and blocks publication when prose coverage or
+structural inventories do not reconcile. Distinct TeX files are never merged
+for conversion; flattening is reserved for independent QA. Gemini is reserved
+for public Q&A in the Worker after publication. See `papers/README.md` for
+preparation, validation, preview, approval, and publishing commands.
+
 ## Deployment
 
 The site lives at **https://alessandro-veneri.github.io**, served by GitHub

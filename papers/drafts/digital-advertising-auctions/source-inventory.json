@@ -1,0 +1,458 @@
+{
+  "sections": [
+    {
+      "id": "literature",
+      "level": "section",
+      "title": "Literature"
+    },
+    {
+      "id": "model",
+      "level": "section",
+      "title": "Model"
+    },
+    {
+      "id": "setup",
+      "level": "subsection",
+      "title": "Setup"
+    },
+    {
+      "id": "equilibrium-analysis",
+      "level": "subsection",
+      "title": "Equilibrium Analysis"
+    },
+    {
+      "id": "proof-of-the-proposition",
+      "level": "subsubsection",
+      "title": "Proof of the Proposition"
+    },
+    {
+      "id": "comparative-statics",
+      "level": "subsection",
+      "title": "Comparative Statics"
+    },
+    {
+      "id": "bidding-strategies",
+      "level": "subsubsection",
+      "title": "Bidding Strategies"
+    },
+    {
+      "id": "revenues",
+      "level": "subsubsection",
+      "title": "Revenues"
+    },
+    {
+      "id": "engagement-rates",
+      "level": "subsubsection",
+      "title": "Engagement Rates"
+    },
+    {
+      "id": "data-sharing-remedies",
+      "level": "section",
+      "title": "Data-Sharing Remedies"
+    },
+    {
+      "id": "calibration-exercise",
+      "level": "subsection",
+      "title": "Calibration exercise"
+    },
+    {
+      "id": "concluding-remarks",
+      "level": "section",
+      "title": "Concluding remarks"
+    },
+    {
+      "id": "extensions",
+      "level": "section",
+      "title": "Extensions"
+    },
+    {
+      "id": "adex-take-rate",
+      "level": "subsection",
+      "title": "AdEx Take-Rate"
+    },
+    {
+      "id": "equilibrium",
+      "level": "subsubsection",
+      "title": "Equilibrium"
+    },
+    {
+      "id": "comparative-statics",
+      "level": "subsubsection",
+      "title": "Comparative Statics"
+    },
+    {
+      "id": "auction-revenue",
+      "level": "subsubsection",
+      "title": "Auction revenue"
+    },
+    {
+      "id": "exchange-fee-revenue",
+      "level": "subsubsection",
+      "title": "Exchange fee revenue"
+    },
+    {
+      "id": "integrated-platform-payoff",
+      "level": "subsubsection",
+      "title": "Integrated platform payoff"
+    },
+    {
+      "id": "implications-for-data-sharing",
+      "level": "subsubsection",
+      "title": "Implications for data sharing"
+    },
+    {
+      "id": "summary",
+      "level": "subsubsection",
+      "title": "Summary"
+    },
+    {
+      "id": "affiliated-values",
+      "level": "subsection",
+      "title": "Affiliated Values"
+    },
+    {
+      "id": "competition-with-multiple-single-homing-advertisers",
+      "level": "subsection",
+      "title": "Competition with multiple Single-Homing Advertisers"
+    },
+    {
+      "id": "n-valuations",
+      "level": "subsection",
+      "title": "N-valuations"
+    },
+    {
+      "id": "non-binding-floor-price",
+      "level": "subsection",
+      "title": "Non-Binding Floor Price"
+    },
+    {
+      "id": "continuous-valuations",
+      "level": "subsection",
+      "title": "Continuous Valuations"
+    },
+    {
+      "id": "proofs",
+      "level": "section",
+      "title": "Proofs"
+    },
+    {
+      "id": "proposition-prop-congestion-info",
+      "level": "subsection",
+      "title": "Proposition prop:congestion_info"
+    },
+    {
+      "id": "proposition-prop-threshold-monotone",
+      "level": "subsection",
+      "title": "Proposition prop:threshold_monotone"
+    },
+    {
+      "id": "lemma-lem-stoch",
+      "level": "subsection",
+      "title": "Lemma lem:stoch"
+    },
+    {
+      "id": "lemma-r1-properties",
+      "level": "subsection",
+      "title": "Lemma R1-properties"
+    },
+    {
+      "id": "corollary-revenues-comparative-last-point",
+      "level": "subsection",
+      "title": "Corollary revenues-comparative, last point"
+    },
+    {
+      "id": "proposition-license-gen",
+      "level": "subsection",
+      "title": "Proposition license-gen"
+    },
+    {
+      "id": "corollary-alpha-threshold",
+      "level": "subsection",
+      "title": "Corollary alpha-threshold"
+    },
+    {
+      "id": "proposition-prop-n-val-structure",
+      "level": "subsection",
+      "title": "Proposition prop:N-val-structure"
+    },
+    {
+      "id": "computations",
+      "level": "section",
+      "title": "Computations"
+    },
+    {
+      "id": "winning-probabilities",
+      "level": "subsection",
+      "title": "Winning probabilities"
+    },
+    {
+      "id": "multiple-advertisers",
+      "level": "subsection",
+      "title": "Multiple advertisers"
+    },
+    {
+      "id": "endogenous-information-access",
+      "level": "subsection",
+      "title": "Endogenous Information Access"
+    },
+    {
+      "id": "private-choice-of-information-access",
+      "level": "subsubsection",
+      "title": "Private choice of information access"
+    },
+    {
+      "id": "demand-side-efficient-information-access",
+      "level": "subsubsection",
+      "title": "Demand-side efficient information access"
+    },
+    {
+      "id": "total-surplus-maximizing-information-access",
+      "level": "subsubsection",
+      "title": "Total-surplus maximizing information access"
+    },
+    {
+      "id": "discussion",
+      "level": "subsubsection",
+      "title": "Discussion"
+    }
+  ],
+  "environments": {
+    "ASSUMPTION": 0,
+    "COROLLARY": 6,
+    "DEFINITION": 1,
+    "LEMMA": 19,
+    "PROOF": 30,
+    "PROPOSITION": 15,
+    "REMARK": 6,
+    "THEOREM": 0
+  },
+  "displayMath": 399,
+  "figures": [
+    {
+      "id": "figure-1",
+      "kind": "raster",
+      "source": "figures/Fig1-reduced.png",
+      "sourceStart": 3882,
+      "asset": "assets/Fig1-reduced.png",
+      "manualRequired": false,
+      "missingSource": false
+    },
+    {
+      "id": "figure-2",
+      "kind": "tikz",
+      "source": "inline tikzpicture",
+      "sourceStart": 32084,
+      "asset": null,
+      "manualRequired": true,
+      "missingSource": false
+    },
+    {
+      "id": "figure-3",
+      "kind": "tikz",
+      "source": "inline tikzpicture",
+      "sourceStart": 48445,
+      "asset": null,
+      "manualRequired": true,
+      "missingSource": false
+    },
+    {
+      "id": "figure-4",
+      "kind": "tikz",
+      "source": "inline tikzpicture",
+      "sourceStart": 52549,
+      "asset": null,
+      "manualRequired": true,
+      "missingSource": false
+    },
+    {
+      "id": "figure-5",
+      "kind": "tikz",
+      "source": "inline tikzpicture",
+      "sourceStart": 68562,
+      "asset": null,
+      "manualRequired": true,
+      "missingSource": false
+    },
+    {
+      "id": "figure-6",
+      "kind": "tikz",
+      "source": "inline tikzpicture",
+      "sourceStart": 69507,
+      "asset": null,
+      "manualRequired": true,
+      "missingSource": false
+    },
+    {
+      "id": "figure-7",
+      "kind": "raster",
+      "source": "numerical-analysis/FL-calibration/calibration_FL_heatmap.png",
+      "sourceStart": 112696,
+      "asset": "assets/calibration_FL_heatmap.png",
+      "manualRequired": false,
+      "missingSource": false
+    },
+    {
+      "id": "figure-8",
+      "kind": "raster",
+      "source": "numerical-analysis/FL-calibration/calibration_FL_sensitivity.png",
+      "sourceStart": 114613,
+      "asset": "assets/calibration_FL_sensitivity.png",
+      "manualRequired": false,
+      "missingSource": false
+    }
+  ],
+  "figureCount": 8,
+  "tables": 1,
+  "footnotes": 14,
+  "citationKeys": [
+    "competitionandmarketsauthorityOnlinePlatformsDigital2020",
+    "ReGoogleDigital2021",
+    "hummelWhenDoesImproved2017",
+    "bergemannTargetingAdvertisingMarkets2011",
+    "despotakisFirstPriceAuctionsOnline2021",
+    "choiOptimizingReservePrices2023",
+    "alcobendasSlimShadingAd2021",
+    "lemeWhyCompetitiveMarkets2020",
+    "dengNonuniformBidscalingEquilibria2024",
+    "kimNonparametricEstimationSponsored2025",
+    "maskinAsymmetricAuctions2000",
+    "wilsonCompetitiveBiddingAsymmetric1967",
+    "engelbrecht-wiggansCompetitiveBiddingProprietary1983",
+    "abrahamPeachesLemonsCookies2020",
+    "martinez-pardinaFirstpriceAuctionsWhere2006",
+    "compteWaitandSeeOptionAscending2004",
+    "miettinenInformationAcquisitionDutch2013",
+    "hauschPrivateValuesAuctions1991",
+    "shiOptimalAuctionsInformation2012",
+    "bergemannFirstPriceAuctionsGeneral2017",
+    "arnostiAdverseSelectionAuction2016",
+    "dannunzioDigitalEcosystemsAdtech2024",
+    "dannunzioIntermediariesOnlineAdvertising2024",
+    "rhodesDigitalEcosystemsData2024",
+    "heidhuesTheoryDigitalEcosystems2024",
+    "lizzeriUniquenessExistenceEquilibrium2000",
+    "banchioDynamicThreatsCredible",
+    "maskinEquilibriumSealedHigh2000",
+    "bergemannBidderOptimalInformationStructures2024",
+    "irvineGoogleAdsBenchmarks",
+    "fengReservePriceOptimization2021",
+    "ostrovskyReservePricesInternet2023",
+    "milgromTheoryAuctionsCompetitive1982"
+  ],
+  "labels": [
+    "google-stack",
+    "sect:lit",
+    "baseline-model",
+    "prop:no-pure",
+    "lem:monotonicity",
+    "lem:interval",
+    "prop:eqm-supports",
+    "lem:bounds",
+    "lem:inclusion",
+    "lem:lowest",
+    "lem:union",
+    "eq:supp-d1",
+    "eq:supp-d2",
+    "mixed-BNE-main",
+    "bidding-dist",
+    "lem:stoch",
+    "revenues-comparative",
+    "R1-properties",
+    "revenues-plot",
+    "HP",
+    "sec:data-sharing",
+    "licensing",
+    "no-sharing",
+    "always-license",
+    "license-gen",
+    "alpha-threshold",
+    "sect:calibration",
+    "tab:calibration-params",
+    "eq:cal-floor",
+    "eq:cal-rhat",
+    "fig:calibration-heatmap",
+    "fig:calibration-sensitivity",
+    "sect:conclusion",
+    "I",
+    "sect:affiliated-values",
+    "prop:correlation-direction",
+    "multiple-ADV",
+    "indep",
+    "ident",
+    "rem:multi-adv-structure",
+    "prop:congestion_info",
+    "prop:threshold_monotone",
+    "sect:N-values",
+    "lem:N-monotonicity",
+    "lem:N-interval",
+    "prop:N-val-structure",
+    "sect:nonbinding-floor",
+    "lem:nonbinding-zero-profit",
+    "lem:nonbinding-participation",
+    "eq:d2-no-deviation",
+    "def:tight-deterrence",
+    "prop:nonbinding",
+    "prop:nonbinding-N-softening",
+    "sect:continuous-values",
+    "sect:proofs",
+    "eq:stay-lower-bound",
+    "eq:mu-win-prob",
+    "eq:Xn-alpha",
+    "lem:license-boundary",
+    "lem:N-bounds",
+    "lem:N-inclusion",
+    "lem:N-lowest",
+    "lem:N-union",
+    "computations"
+  ],
+  "references": [
+    "google-stack",
+    "sect:lit",
+    "baseline-model",
+    "licensing",
+    "sect:calibration",
+    "sect:conclusion",
+    "sect:N-values",
+    "sect:nonbinding-floor",
+    "sect:continuous-values",
+    "prop:eqm-supports",
+    "eq:supp-d1",
+    "eq:supp-d2",
+    "bidding-dist",
+    "R1-properties",
+    "revenues-plot",
+    "multiple-ADV",
+    "HP",
+    "lem:license-boundary",
+    "always-license",
+    "alpha-threshold",
+    "license-gen",
+    "tab:calibration-params",
+    "fig:calibration-heatmap",
+    "fig:calibration-sensitivity",
+    "I",
+    "prop:congestion_info",
+    "lem:monotonicity",
+    "lem:interval",
+    "lem:inclusion",
+    "lem:union",
+    "prop:threshold_monotone",
+    "sect:proofs",
+    "lem:N-monotonicity",
+    "lem:N-interval",
+    "lem:N-inclusion",
+    "lem:N-bounds",
+    "eq:d2-no-deviation",
+    "def:tight-deterrence",
+    "lem:nonbinding-zero-profit",
+    "lem:nonbinding-participation",
+    "eq:stay-lower-bound",
+    "eq:mu-win-prob",
+    "eq:Xn-alpha",
+    "lem:stoch",
+    "mixed-BNE-main",
+    "revenues-comparative",
+    "prop:N-val-structure",
+    "lem:bounds"
+  ]
+}

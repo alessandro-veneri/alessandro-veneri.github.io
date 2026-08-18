@@ -14,3 +14,13 @@ Academic_CV/*.toc
 Academic_CV/academic.pdf
 Academic_CV/non-academic.pdf
 assets/cv.pdf
+
+# Live-paper publisher working state and local previews
+papers/work/
+papers/.preview/
+papers/**/__pycache__/
+papers/**/*.pyc
+
+# Cloudflare local state and dependencies
+services/paper-chat/.wrangler/
+services/paper-chat/node_modules/

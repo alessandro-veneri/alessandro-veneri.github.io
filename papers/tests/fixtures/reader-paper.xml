@@ -1,0 +1,16 @@
+<PAPER schemaVersion="1" sourceCommit="test">
+  <TITLE>Digital Advertising Auctions with Asymmetric Consumer Information</TITLE>
+  <AUTHORS><AUTHOR>Rodolfo Alberto Salonia</AUTHOR><AUTHOR>Alessandro Veneri</AUTHOR></AUTHORS>
+  <PUBLICATION_DATE>Draft preview</PUBLICATION_DATE>
+  <PDF>paper.pdf</PDF>
+  <PLAINTEXT>This paper studies how unequal access to consumer information changes bidding competition in digital advertising auctions.</PLAINTEXT>
+  <ABSTRACT><P>We study how asymmetric access to consumer data shapes competition in real-time bidding advertising markets.</P></ABSTRACT>
+  <SECTION ref="model" title="Model">
+    <P>Two platforms bid for one advertising impression. The integrated platform is informed with probability <MATH>\alpha</MATH>.</P>
+    <PROPOSITION ref="result-one">Greater access to data softens competition and raises both bidders' expected payoff.</PROPOSITION>
+    <EQUATION ref="eq-one">R_1(\alpha) \geq R_1(0)</EQUATION>
+    <P>This result follows from the equilibrium bidding distributions.<FOOTNOTE>The full proof appears in the appendix.</FOOTNOTE></P>
+  </SECTION>
+  <SECTION ref="conclusion" title="Conclusion"><P>Consumers benefit from improved targeting, while the integrated platform may prefer to preserve a closed data ecosystem.</P></SECTION>
+  <REFERENCES><REFERENCE key="example2026">Example Author. An illustrative reference. 2026.</REFERENCE></REFERENCES>
+</PAPER>

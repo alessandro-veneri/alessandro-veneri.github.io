@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "chatEndpoint": "",
+  "papers": [
+    {
+      "id": "digital-advertising-auctions",
+      "slug": "digital-advertising-auctions",
+      "title": "Digital Advertising Auctions with Asymmetric Consumer Information",
+      "authors": [
+        "Rodolfo Alberto Salonia",
+        "Alessandro Veneri"
+      ],
+      "publicationDate": "Draft",
+      "status": "draft",
+      "approved": false,
+      "chatEnabled": true,
+      "bundle": "drafts/digital-advertising-auctions",
+      "source": {
+        "path": "../../EUI-projects/adv-baseline",
+        "root": "main.tex",
+        "bibliography": "ADV_auction.bib",
+        "repository": "https://github.com/alessandro-veneri/adv-baseline",
+        "commit": "eb225bf6549312b8757fb0432a31c3165c6289d3"
+      },
+      "approval": {
+        "approvedAt": null,
+        "sourceCommit": null,
+        "validationReportSha256": null
+      }
+    }
+  ]
+}

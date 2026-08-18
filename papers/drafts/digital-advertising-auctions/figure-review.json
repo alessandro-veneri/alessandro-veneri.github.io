@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "instructions": "Fill page/x/y/width/height after reviewing rendered PDF pages, then run extract_figures.py.",
+  "figures": [
+    {
+      "id": "figure-2",
+      "source": "inline tikzpicture",
+      "sourceStart": 32084,
+      "page": null,
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null,
+      "dpi": 180
+    },
+    {
+      "id": "figure-3",
+      "source": "inline tikzpicture",
+      "sourceStart": 48445,
+      "page": null,
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null,
+      "dpi": 180
+    },
+    {
+      "id": "figure-4",
+      "source": "inline tikzpicture",
+      "sourceStart": 52549,
+      "page": null,
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null,
+      "dpi": 180
+    },
+    {
+      "id": "figure-5",
+      "source": "inline tikzpicture",
+      "sourceStart": 68562,
+      "page": null,
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null,
+      "dpi": 180
+    },
+    {
+      "id": "figure-6",
+      "source": "inline tikzpicture",
+      "sourceStart": 69507,
+      "page": null,
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null,
+      "dpi": 180
+    }
+  ]
+}
