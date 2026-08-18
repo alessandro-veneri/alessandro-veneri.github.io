@@ -1,0 +1,66 @@
+name: Papers Pipeline CI
+
+# Quality lane for the live-paper publisher and the paper-chat Worker.
+# Deliberately separate from "Build and Deploy Site": a red run here reports a
+# problem with work in progress, it does not stop the CV/site from publishing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'papers/**'
+      - 'services/paper-chat/**'
+      - '.github/workflows/papers-ci.yml'
+  pull_request:
+    paths:
+      - 'papers/**'
+      - 'services/paper-chat/**'
+      - '.github/workflows/papers-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publisher-tests:
+    name: Live-paper publisher and deployment gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      # paperlib.build_file_chunks shells out to `latexpand`, which ships in
+      # texlive-extra-utils and is not present on a bare runner.
+      - name: Install latexpand
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-extra-utils
+          latexpand --version
+
+      - name: Run publisher tests
+        run: python3 -m unittest discover papers/tests -v
+
+      - name: Verify production build excludes unapproved drafts
+        run: python3 papers/scripts/build_papers.py --output "${RUNNER_TEMP}/_papers"
+
+  worker-tests:
+    name: paper-chat Worker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: services/paper-chat/package-lock.json
+
+      - name: Install Worker dependencies
+        working-directory: services/paper-chat
+        run: npm ci
+
+      - name: Test Worker
+        working-directory: services/paper-chat
+        run: npm test

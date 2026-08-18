@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Compile academic.tex
         uses: xu-cheng/latex-action@v3
@@ -28,13 +28,10 @@ jobs:
           working_directory: Academic_CV
           root_file: academic.tex
 
-      - name: Test live-paper publisher and deployment gates
-        run: python3 -m unittest discover papers/tests -v
-
-      - name: Test paper-chat Worker
-        working-directory: services/paper-chat
-        run: npm test
-
+      # Publisher/Worker unit tests live in papers-ci.yml so that work in
+      # progress under papers/ or services/ can never block the CV going live.
+      # The real deployment gate still runs below: build_papers.py refuses to
+      # publish any paper that is unapproved, unvalidated, or has stale hashes.
       - name: Assemble site
         run: |
           mkdir -p _site/assets
