@@ -25,17 +25,28 @@ jobs:
   publisher-tests:
     name: Live-paper publisher and deployment gates
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
 
-      # paperlib.build_file_chunks shells out to `latexpand`, which ships in
-      # texlive-extra-utils and is not present on a bare runner.
+      # paperlib.build_file_chunks shells out to `latexpand`, absent on a bare
+      # runner. Do NOT apt-get texlive-extra-utils for this: it drags in the
+      # whole TeX Live tree and ran >10 min before being cancelled. latexpand is
+      # a single dependency-free Perl script, so fetch it pinned by tag+digest.
       - name: Install latexpand
+        env:
+          LATEXPAND_URL: https://gitlab.com/latexpand/latexpand/-/raw/v1.7.2/latexpand
+          LATEXPAND_SHA256: 4c3ef0a02b25a998f91f2de109e139dcd6b4200e1939b3aa3702a7ddf1ffe0f6
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-extra-utils
-          latexpand --version
+          set -euo pipefail
+          mkdir -p "${RUNNER_TEMP}/bin"
+          curl -fsSL --retry 3 --retry-delay 2 \
+            -o "${RUNNER_TEMP}/bin/latexpand" "${LATEXPAND_URL}"
+          echo "${LATEXPAND_SHA256}  ${RUNNER_TEMP}/bin/latexpand" | sha256sum -c -
+          chmod +x "${RUNNER_TEMP}/bin/latexpand"
+          echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
+          "${RUNNER_TEMP}/bin/latexpand" --version
 
       - name: Run publisher tests
         run: python3 -m unittest discover papers/tests -v
@@ -46,6 +57,7 @@ jobs:
   worker-tests:
     name: paper-chat Worker
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out repo
         uses: actions/checkout@v5

@@ -18,6 +18,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Bounded so a hung build cannot sit in the `pages` concurrency group and
+    # block every later publish.
+    timeout-minutes: 20
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
@@ -51,6 +54,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
